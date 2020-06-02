@@ -1,3 +1,7 @@
+<!DOCTYPE html>
+
+<head></head>
+<body>
 <?php
   // if(条件){
   //   処理
@@ -76,3 +80,5 @@
       echo '1-3ではない';
   } 
 ?>
+</body>
+</html>
