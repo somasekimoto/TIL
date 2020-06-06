@@ -13,5 +13,22 @@ class AreaSeeder extends Seeder
     {
         //
 
+        DB::table('areas')->insert([
+            [
+            'id' => 1,
+            'name' => '東京',
+            'sort_no' => 1 
+            ],
+            [
+            'id' => 2,
+            'name' => '大阪',
+            'sort_no' => 2 
+            ],
+            [
+            'id' => 3,
+            'name' => '福岡',
+            'sort_no' => 3 
+            ],
+        ]);
     }
 }
