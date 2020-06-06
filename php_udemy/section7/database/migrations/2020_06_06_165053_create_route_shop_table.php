@@ -14,8 +14,9 @@ class CreateRouteShopTable extends Migration
     public function up()
     {
         Schema::create('route_shop', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+            $table->unsignedBigInteger('route_id');
+            $table->unsignedBigInteger('shop_id');
+            $table->primary(['route_id', 'shop_id']);
         });
     }
 
