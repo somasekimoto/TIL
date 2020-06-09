@@ -1,0 +1,18 @@
+version: "3"
+services:
+  # apache:
+  #   image: httpd:latest
+  #   ports:
+  #     - 8080:80
+  #   volumes:
+  #     - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+  #     - ./www/html:/var/www/html
+  #   depends_on:
+  #     - php
+
+  php:
+    build: .
+    ports:
+      - 8080:80
+    volumes:
+      - ./www/html:/var/www/html
