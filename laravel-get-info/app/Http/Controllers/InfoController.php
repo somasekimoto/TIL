@@ -25,7 +25,16 @@ class InfoController extends Controller
         // return view('ip', compact('ips'));
     }
 
-    public function anything(){
-        return view('anything');
+    public function anything(Request $request){
+
+        $headers = $request;
+        $url = $request->url();
+        $method = $request->method();
+        $userAgent = $request->userAgent();
+        $origin = $request->ip();
+
+        return view('anything', compact('headers', 'url', 'method', 'userAgent', 'origin'));
+        // return view('anything', compact('request'));
+        // dd($request);
     }
 }
