@@ -24,3 +24,18 @@ e - 手動で現在の hunkを修正する
 - "HEAD" は "@" と同じ。
 - "HEAD^"、"HEAD" "^" があるのとないのとでは変わる。
 - 基本的に、"git reset --soft" で巻き戻る。
+
+# git checkout
+
+作業ブランチの切り替えや作成( -b オプション)くらいでしか使わないと思っていたが、作業中のファイルの変更を最新のコミットまで一気に戻す( 変更を削除する )ことができると最近知った。
+
+```
+$ git status   // 一応どこまで変更したか確認しておこう
+
+ (use "git add/rm <file>..." to update what will be committed)
+ (use "git restore <file>..." to discard changes in working directory)
+    modified:   git.md  // このファイルの変更を取り消す。git addする前のもの
+
+$ git checkout git.md
+Updated 1 path from the index
+```

@@ -164,3 +164,50 @@ $result = array_filter(
 ```
 
 in_array, array_search というのもあるらしい。
+
+# Str::random()
+
+laravel6.0 系から、文字列や配列のヘルパはデフォルトから削除されたことにより、str_random() が使えなくな離ました。
+
+```php
+use Illuminate\Support\Str;
+
+Str::random(10)  // ランダムで10文字の文字列が生成されます
+```
+
+他の、str* や array* ヘルパーメソッドも削除されたようなので、注意が必要。
+
+# get()
+
+all(), toArray(), find() などと比較されることが多い。僕自身もしっかり理解や区別はできていない。
+今回現場でわかったことを列挙していく。
+
+- Collection 型の戻り値。( find() は モデルのオブジェクト型)
+- 第１引数で、配列の中のキー、第２引数で、そのキーが存在しなかったときのデフォルト値を設定できる
+
+これがわかっていると、シーンによっては、条件分岐の記述を書かなくて済む。
+
+```php
+$password = $request->all()['password'] ? $request->all()['password'] : 'dummy';
+```
+
+これを、get() を使えば、
+
+```
+$password = $request->get('password', 'dummy');
+```
+
+# route::redirect
+
+routing の ファイルで、
+
+```php
+Route::redirect('here', 'there');
+```
+
+とすればリダイレクトが簡単にできる。
+
+```php
+Route::redirect('here', 'there', statu_code);
+// 第３引数でステータスコードを設定できる。デフォルトは 302
+```
