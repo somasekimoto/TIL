@@ -20,17 +20,17 @@ laravel は " composer dump-autoload "
 
 # S3 view ファイルをアップロード( sls で deploy)
 
-1. 以下を実行。s3 と laravel を連携させるパッケージです。
+## 1. 以下を実行。s3 と laravel を連携させるパッケージです。
 
 ```
 $ composer require league/flysystem-aws-s3-v3
 ```
 
-## To be continued..
+### To be continued..
 
 # S3 に アップロードした view ファイルの URL を一時的なものにする。
 
-1. .env の "AWS_ACCESS_KEY=" などの AWS 関連の部分を複製する。そして、S3 のバケットのポリシーを持つキーを入力する。
+## 1. .env の "AWS_ACCESS_KEY=" などの AWS 関連の部分を複製する。そして、S3 のバケットのポリシーを持つキーを入力する。
 
 ```.env
 AWS_ACCESS_KEY_ID=
@@ -59,7 +59,7 @@ SESSION_DRIVER=cookie
 
 の方がいいかもしれない。（理由はわかりません）
 
-2. config/filesystems.php に以下のように記述
+## 2. config/filesystems.php に以下のように記述
 
 ```php
 disks => {
@@ -77,7 +77,7 @@ disks => {
 }
 ```
 
-3. app/helpers.php 作成・編集
+## 3. app/helpers.php 作成・編集
 
 ```php
 <?php
@@ -89,7 +89,7 @@ if (!function_exists('s3_asset')) {
 }
 ```
 
-4. composer.json に追記
+## 4. composer.json に追記
 
 ```json
 "autoload": {
@@ -106,9 +106,9 @@ if (!function_exists('s3_asset')) {
 },
 ```
 
-5. composer dump-autoload 実行。これで、helpers.php の s3_asset 関数が使えるようになりました。
+## 5. composer dump-autoload 実行。これで、helpers.php の s3_asset 関数が使えるようになりました。
 
-6. resources/views/layouts/app.blade.php に 関数の記述
+## 6. resources/views/layouts/app.blade.php に 関数の記述
 
 ```php
 @if(env('APP_ENV') == 'local')
@@ -210,4 +210,21 @@ Route::redirect('here', 'there');
 ```php
 Route::redirect('here', 'there', statu_code);
 // 第３引数でステータスコードを設定できる。デフォルトは 302
+```
+
+# explode
+
+文字列を、指定した delimiter で分割し、その分割した文字列を含む collection 型で返す。
+js や ruby のときのように、毎度 split を使わずに済むようになった。
+
+```php
+$message = 'Hello New World';
+
+explode(' ', $message);
+
+#=> ['Hello', 'New', 'World']
+
+explode(' ', $message, 2); #<=最大要素数を2に指定
+
+#=> ['Hello', 'New World']
 ```

@@ -39,3 +39,29 @@ $ git status   // 一応どこまで変更したか確認しておこう
 $ git checkout git.md
 Updated 1 path from the index
 ```
+
+# git revert
+
+参考記事
+
+https://qiita.com/chihiro/items/2fa827d0eac98109e7ee
+
+commit を 取り消しできる。
+かなり古い変更を削除したいときに便利。
+複数 commit に行うこともできる。
+
+```
+$ git revert <commit1> <commit2>
+```
+
+git revert は、commit を取り消す、という commit をすること。
+
+オプションをつけることにより、コミットせずに、index に戻すだけ、ということもできるようになる。
+
+```
+$ git revert <commit1> <commit2> -n
+  or
+$ git revert <commit1> <commit2> --no-commit
+```
+
+複数のコミットを revert するときに、一度にコミットすることができるので便利。
