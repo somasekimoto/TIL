@@ -228,3 +228,113 @@ explode(' ', $message, 2); #<=最大要素数を2に指定
 
 #=> ['Hello', 'New World']
 ```
+
+# ログレベル
+
+参考記事 https://reffect.co.jp/laravel/laravel-logging-setting#i
+
+重要度によって、
+
+**emergency, alert, critical, error, warning, notice, info, debug**
+
+に分けられる
+
+```php
+use Illuminate\Support\Facades\Log
+
+Log::emergency($message);
+Log::alert($message);
+Log::critical($message);
+Log::error($message);
+```
+
+という風にログを出力できる。
+
+# slack にエラーメッセージを送る
+
+## 1. slack app
+
+設定と管理 -> アプリの管理する -> Incoming Webhook -> slack app に追加
+
+そして、チャンネルを選んだり、設定をしていきます。
+
+最後に、https://hooks.slack.com/services/ から始まる url をコピーしておく
+
+## 2. .env
+
+```
+
+LOG_CHANNEL=stack
+LOG_SLACK_WEBHOOK_URL=https://hooks.slack.com/services/XXXXXXXXXXXXXXXX/XXXXXXXXXXXXXXXX
+# 先ほどコピーした URL を貼り付ける
+
+```
+
+## 3. logging.php
+
+```php
+'channels' => [
+        'stack' => [
+            'driver' => 'stack',
+            'channels' => ['stderr', 'slack'],  //'slack' を追記
+            'ignore_exceptions' => false,
+        ],
+
+        〜省略〜
+
+        'slack' => [
+            'driver' => 'slack',
+            'url' => env('LOG_SLACK_WEBHOOK_URL'),
+            'username' => 'Laravel Log',
+            'emoji' => ':boom:',
+            'level' => 'error',  //通知を表示のエラーレベルを下げるため、'critical' から 'error' に変更
+        ],
+```
+
+これで、エラーが出たときに slack に通知がいく
+
+# larave x sls framework x ELB で local 環境ではログインできて、 staging 環境ではできない謎エラー
+
+参考記事 https://qiita.com/hisash/items/4b3bb1ea47c38b0d8c86
+
+結論からいうと、下記で解決。
+
+app/Http/Middleware/TrustProxies.php
+
+```php
+<?php
+
+namespace App\Http\Middleware;
+
+use Illuminate\Http\Request;
+use Fideloper\Proxy\TrustProxies as Middleware;
+
+class TrustProxies extends Middleware
+{
+    /**
+     * The trusted proxies for this application.
+     *
+     * @var array
+     */
+    protected $proxies = '*'; //ここを * もしくは ** にする。
+```
+
+最初はいまいち理解しがたかったが、
+
+**リクエストの取得の信用するプロキシの設定**
+
+https://readouble.com/laravel/7.x/ja/requests.html
+
+**Laravel で AWS の LB を通した環境でエンドユーザの IP を取得したい**
+
+https://qiita.com/yamotuki/items/a51e7e6e7edb243b6150
+
+を読んで理解ができ始めた。
+
+要は、クライアントとアプリの間に、ロードバランサーが入っている構造だと、
+
+**クライアント - ロードバランサー間は、HTTPS 通信**してくれるが、
+
+**ロードバランサー - アプリ間は、HTTP 通信**になってしまうので、
+
+そこで laravel の auth が 安全ではない通信だと判断して、ログインしようとしても、通信が途中で終わってしまっていた。
