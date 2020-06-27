@@ -20,13 +20,53 @@ laravel は " composer dump-autoload "
 
 # S3 view ファイルをアップロード( sls で deploy)
 
-## 1. 以下を実行。s3 と laravel を連携させるパッケージです。
+AWS コンソールで、IAM と S3 bucket を作成した後、
+
+## 1. .env を編集
+
+```
+ASSET_URL=https://[S3 のバケット名].s3-ap-northeast-1.amazonaws.com
+
+
+AWS_ACCESS_KEY_ID=XXXXXXXXXXXXX
+AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXX
+AWS_DEFAULT_REGION=ap-northeast-1
+AWS_BUCKET= S3 のバケット名
+```
+
+## 2. Serverless Framework にプラグインインストール
+
+```
+$ sls plugin install -n serverless-s3-sync
+```
+
+## 3. serverless.yml への記述
+
+```yml
+plugins:
+   - ./vendor/bref/bref
+   - serverless-domain-manager
++  - serverless-s3-sync
+
+ custom:
++  s3Sync:
++    # A simple configuration for copying static assets
++    - bucketName: ${self:service.name}-${opt:stage, self:provider.stage}-asset
++      localDir: public # required
+
++resources:
++  Resources:
++    StaticContentS3:
++      Type: AWS::S3::Bucket
++      Properties:
++        BucketName: ${self:service.name}-${opt:stage, self:provider.stage}-asset
+```
+
+## 4. s3 と laravel を連携させるパッケージをインストール
 
 ```
 $ composer require league/flysystem-aws-s3-v3
 ```
-
-### To be continued..
 
 # S3 に アップロードした view ファイルの URL を一時的なものにする。
 
@@ -338,3 +378,126 @@ https://qiita.com/yamotuki/items/a51e7e6e7edb243b6150
 **ロードバランサー - アプリ間は、HTTP 通信**になってしまうので、
 
 そこで laravel の auth が 安全ではない通信だと判断して、ログインしようとしても、通信が途中で終わってしまっていた。
+
+# microtime()
+
+現在の時間をマイクロ秒まで返してくれる関数
+
+```php
+
+$before = microtime(true);
+
+//ここに処理を記述
+
+$after = microtime(true);
+
+$time = $after - $before;
+
+echo $time;
+```
+
+これで処理時間を測ることもできる
+
+# middleware
+
+参考記事 https://www.ritolab.com/entry/69
+
+HTTP リクエストに対してその入口と出口で動作するメカニズム。
+
+入口は、routing と controller の間で処理される。
+入口で動作する処理の具体例は、認証やバリデーションなど。
+
+出口は、View を通った後、つまり Blade テンプレートへのバインドも済んだ後での処理。
+出口の処理の具体例は、あまり想像しにくい。
+
+## 1. middlewre クラスの生成
+
+```
+$ php artisan make:middleware <Middleware名>
+```
+
+## 2. 初期のソース
+
+```php
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+
+class HtmlOperation
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+    public function handle($request, Closure $next)
+    {
+        return $next($request);
+    }
+```
+
+## 3. 入口での処理の書き方
+
+```php
+public function handle($request, Closure $next)
+{
+  /*
+   * ここに処理を実装する
+   */
+
+  return $next($request);
+}
+```
+
+## 4. 出口での処理の書き方
+
+```php
+public function handle($request, Closure $next)
+{
+  $response = $next($request); //ここで何の処理もせず、入口の処理が終了する
+
+  /*
+   * ここに処理を実装する
+   */
+
+  return $response; //上記の処理が実行されて、出口の処理終了
+}
+```
+
+# SESSION_DRIVER
+
+参考記事 https://readouble.com/laravel/7.x/ja/session.html
+
+.env ファイルにこんな記載がある。
+
+```
+SESSION_DRIVER=
+```
+
+セッション管理をどこでするか決められる環境変数
+
+file: storage/framework/sessions に保存される。
+
+array: PHP の配列として保存されるだけで、リクエスト間で継続しません。
+
+cookie: 暗号化され安全なクッキーに保存されます。しかし、cookie に保存されすぎると、'Bad Request' の chrome のエラーが出ることがある。
+
+database: リレーショナルデータベースへ保存されます。
+
+memcached/redis: スピードの早いキャッシュベースの保存域に保存されます。
+
+# \$hidden
+
+データ取得しないフィールドを指定する。外には見せたくない情報があるときに使う。(password 等)
+
+Model に記述
+
+```php
+protected $hidden = [
+  'password', 'profit', 'fullname'
+];
+```

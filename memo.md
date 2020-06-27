@@ -20,6 +20,9 @@
 - gc = git commit
 - pas = php artisan serve
 - pa = php artisan
+- la = ls -a
+- ll = ls -l
+- lla = ls -lla
 
 ---
 

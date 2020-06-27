@@ -15,3 +15,45 @@ lambda Python で実行する際、lambda の関数上にない module を impor
 ### 4. requirements.txt 作成・記述
 
 ### 5. デプロイ
+
+# SLS_DEBUG
+
+```
+$ sls deploy
+```
+
+ここでエラーが出た。
+
+```
+For debugging logs, run again after setting the "SLS_DEBUG=*" environment variable.
+```
+
+```
+$ export SLS_DEBUG=true
+```
+
+とすれば直った。
+
+# serverless framework で ELB を利用するために、Lambda にターゲットグループを設定する
+
+lambda はデフォルトではターゲットグループがないので、serverless.yml に設定する必要がある。
+
+```yml
+resources:
+  Resources:
+    InvokePermission:
+      Type: AWS::Lambda::Permission
+      DependsOn: HelloLambdaFunction # get the function name from .serverless/serverless-state.json
+      Properties:
+        FunctionName: [Lambda の関数名]
+        Action: "lambda:InvokeFunction"
+        Principal: elasticloadbalancing.amazonaws.com
+    TargetGroup:
+      Type: AWS::ElasticLoadBalancingV2::TargetGroup
+      DependsOn: InvokePermission
+      Properties:
+        Name: ターゲットグループ名
+        TargetType: lambda
+        Targets:
+          - Id: arn:aws:lambda:ap-northeast-1:9999999999:function: [Lambda の関数名]
+```
