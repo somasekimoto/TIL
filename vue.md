@@ -190,3 +190,15 @@ mix
 ```
 
 #### 7. 子コンポーネントたち作成
+
+## axios で、デフォルトで CSRF トークンを設定(laravel x Vue.js)
+
+### resources/js/bootstrap.js を編集
+
+```js
+window.axios.defaults.headers.common["X-CSRF-TOKEN"] = document
+  .querySelector('meta[name="csrf-token"]')
+  .getAttribute("content")
+```
+
+これで OK
