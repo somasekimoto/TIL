@@ -10,6 +10,7 @@
 - Command + Shift + option + [, or ] : コード・ブロックの最後/先頭まで選択
 - Command + Shift + up arrow/down arrow : 上下の行の入れ替え
 - Command + S : "Save and Format" に変更した。url (https://stackoverflow.com/questions/12496669/code-reformatting-on-save-in-phpstorm-or-other-jetbrains-ide)
+- command + tab : 起動中のアプリの選択
 
 ---
 
