@@ -45,3 +45,24 @@ url = host + '/my_app/login'
 
 res = requests.get(url..... #省略
 ```
+
+# json.dumps(), json.dump()
+
+参考記事
+
+https://www.sejuku.net/blog/79338
+
+## dumps()
+データを JSON 形式に変える
+
+## dump()
+ファイルとして保存する
+```python
+import json
+ 
+dict = {"name": "tarou", "age": 23, "gender": "man"}
+ 
+json_file = open('test.json', 'w')
+ 
+json.dump(dict, json_file)
+```

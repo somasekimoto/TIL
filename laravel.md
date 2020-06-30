@@ -501,3 +501,28 @@ protected $hidden = [
   'password', 'profit', 'fullname'
 ];
 ```
+
+
+# json_encode(), json_decode()
+
+参考記事
+
+https://qiita.com/shosho/items/34d0e9cc68c376a0a972
+
+## json_encode() : JSON化 
+
+```php
+$array = [];
+$json = json_encode($array,JSON_PRETTY_PRINT);
+// JSON_PRETTY_PRINT にすると、読みやすい形になる。
+```
+
+## json_decode() : 配列化
+
+```php
+$members = Member::all();
+
+$json = json_decode($members, true);
+// 第二引数 true/false は array/object 
+dd($json);
+```
