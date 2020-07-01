@@ -10,3 +10,13 @@ console.log(obj.count);
 console.log(obj.result);
 // true
 ```
+
+# npm run dev の副作用
+
+```js
+$ npm run dev
+```
+
+をすると、public/ の中身が一掃される。
+
+なので、public/ に何か手を加える時は、npm run dev してからする必要がある。

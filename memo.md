@@ -30,6 +30,7 @@
 ### Browser
 
 - Command + Shift + r : Full Reload (it clears the cache and reload the browser)
+- command + shift + f : タブを非表示にする。表示させる。
 
 ---
 

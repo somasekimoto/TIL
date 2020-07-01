@@ -33,7 +33,7 @@ https://qiita.com/HeRo/items/4e65dcc82783b2766c03
 
 https://qiita.com/ume3003/items/cd9d05dff014952a73f8
 
-大まかな
+大まかな流れ
 ```
 $ npm i clasp -g
 $ clasp login
@@ -44,3 +44,10 @@ $ clasp pull
 
 - **Google App Script の有効化を忘れない**
 - **Google アカウントの認証していないと、エラーがでる。("もう少し待ってから試してください" みたいな)**
+
+# AKASHI API
+
+参考記事
+
+https://akashi.zendesk.com/hc/ja/articles/115000475854-AKASHI-%E5%85%AC%E9%96%8BAPI-%E4%BB%95%E6%A7%98
+

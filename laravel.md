@@ -526,3 +526,98 @@ $json = json_decode($members, true);
 // 第二引数 true/false は array/object 
 dd($json);
 ```
+
+## whereNotNull, whereNull 
+
+```php
+users::whereNotNull('age')->get();
+// age が null ではないレコードを取ってくる。
+users::whereNull('age')->get();
+// age が null のレコードを取ってくる。
+```
+
+## toArray と all()
+
+参考記事
+
+https://qiita.com/ucan-lab/items/47638a7b52090f59c2bf
+
+## array_map
+
+参考記事
+
+https://www.sejuku.net/blog/22549
+
+```php
+$nums = [200, 300, 400, 500];
+$ten = 10;
+
+$array = array_map(function($num) use ($ten) {
+    return $num * $ten;
+}, $nums);
+
+// use は使わなくても良い。
+// $array = [2000, 3000, 4000, 5000];
+```
+
+## array_values
+
+
+## array_column
+
+参考記事
+
+https://qiita.com/jacksuzuki/items/eae943735bda747be09c
+
+pluck なども利用して、配列を自由に作り変えられる。
+
+
+```php
+array array_column ( array $input , mixed $column_key [, mixed $index_key = null ] )
+
+// 第二引数と第三引数は、array のインデックス番号でも指定できる
+
+$users = [
+    [
+    "id" => 1,
+    "name" => "soma",
+    "age" => 23,
+    ],
+    [
+    "id" => 2,
+    "name" => "kate",
+    "age" => 21,
+    ],
+    [
+    "id" => 3,
+    "name" => "Tyle",
+    "age" => 20,
+    ]
+]
+
+$array = array_column($users, 2, 1);
+// $array = [
+//     [
+//         "soma" => 23,
+//     ],
+//     [
+//         "kate" => 21,
+//     ],
+//     [
+//         "Tyle" => 20
+//     ],
+// ]
+```
+
+## array_merge
+
+```php
+$array1 = ["a", "b", "c"];
+$array2 = ["d", "e", "f"];
+
+array3 = array_merge(array1, array2);
+array4 = array_merge(array2, array1);
+
+// array3 = ["a", "b", "c", "d", "e", "f"]
+// array3 = ["d", "e", "f", "a", "b", "c",]
+```
