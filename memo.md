@@ -34,6 +34,11 @@
 
 ---
 
+### Slack
+- command + k : チャンネル検索
+
+---
+
 ## Useful tips & tools
 
 ### **pwgen** (password generator)
@@ -98,7 +103,7 @@ $ make stg // これで Makefile 内の stg のコマンド3つが実行され�
 
 注意：**PhpStorm や VSCODE で Makefile に記述しない( tab と space の関係で)。 vim で書く**
 
-# curl コマンド オプション
+## curl コマンド オプション
 
 参考記事
 
@@ -112,3 +117,9 @@ https://qiita.com/ryuichi1208/items/e4e1b27ff7d54a66dcd9
 - -d "name=hoge&num=30" : パラメーターを指定
 - -L "[URL]" : リダイレクトを追従
 - -o : レスポンスボディの出力先を指定
+
+## HTTP Response Status Code
+
+参考記事
+
+https://developer.mozilla.org/ja/docs/Web/HTTP/Status

@@ -621,3 +621,45 @@ array4 = array_merge(array2, array1);
 // array3 = ["a", "b", "c", "d", "e", "f"]
 // array3 = ["d", "e", "f", "a", "b", "c",]
 ```
+
+## Guzzle
+Http リクエストを投げられるライブラリ
+
+参考記事
+
+https://qiita.com/yousan/items/2a4d9eac82c77be8ba8b
+
+```php
+$client = new \GuzzleHttp\Client();
+try {
+    $res = $client->post("[URL]", params);
+} catch (\GuzzleHttp\Exception\ClientException $e) {
+    $response = $e->getResponse();
+    return $responseBodyAsString = $response->getBody()->getContents();
+}
+```
+
+## is_null
+
+参考記事
+
+isset, empty, is_nullの違い
+
+https://qiita.com/hirossyi73/items/6e6b9b3ff155a8b05075
+
+```php
+$var = "";
+is_null($var);
+// false
+
+$var = null;
+is_null($var);
+// true
+```
+
+## auth()
+
+```php
+auth()->user();
+// ログインしているユーザーの情報取得
+```
