@@ -663,3 +663,107 @@ is_null($var);
 auth()->user();
 // ログインしているユーザーの情報取得
 ```
+
+## jsonの返し方
+
+参考記事
+
+https://storehouse-techhack.com/laravel-response/
+
+```php
+public function index(){
+    $array = [
+        "first_name" => "soma",
+        "last_name" => "sekimoto",
+    ];
+
+    return response()->json($array);
+}
+```
+
+
+## Guzzle の例外時のレスポンス拾う
+
+
+```php
+try {
+    $client = new \GuzzleHttp\Client();
+    $response = $client->get('URL');
+} catch
+    (\GuzzleHttp\Exception\ClientException $e) {
+        $responseBodyAsString = $e->getResponse()->getBody()->getContents();
+        return json_decode($responseBodyAsString, true);
+}
+```
+例外にレスポンスをとりたいときは、getResponse や getRequest を利用してからメソッドチェーンで繋ぐ。
+
+## フラッシュメッセージを表示
+
+参考記事
+
+https://qiita.com/usaginooheso/items/6a99e565f16de2f9ddf7
+
+Controller などで、
+
+```php
+public function index(){
+    \Session::flash('message', 'この項目は必須です。')
+}
+```
+
+これで session に'message'という名前で保存される。
+
+view
+
+index.blade.php
+```php
+@if (session('message'))
+<div class='alert alert-primary'>
+    {{session('message')}}
+</div>
+@endif
+```
+
+## array_key_exists
+
+参考記事
+
+https://www.softel.co.jp/blogs/tech/archives/5878
+
+https://hacknote.jp/archives/47307/
+
+```php
+$var = null;
+
+isset($var); // false
+array_key_exists($var); //true
+```
+
+array_key_exists と isset では null のときの結果が違うのと、処理時間もかなり変わることがあるらしい。(array_key_exists の方が遅い)
+
+## 例外をログする report()
+
+```php
+try {
+    //省略
+}
+catch(\Exception $e){
+    report($e)
+}
+```
+
+## json_encode()で定義済み定数を利用する
+
+```php
+
+$array = [
+    "name" => "soma",
+    "age" => 23,
+];
+
+json_encode($array, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)
+
+```
+
+- JSON_PRETTY_PRINT : JSON を見やすい形に整形する。
+- JSON_UNESCAPED_UNICODE : 日本語などのマルチバイトの文字も正しく表示させる。
