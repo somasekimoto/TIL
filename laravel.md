@@ -501,3 +501,269 @@ protected $hidden = [
   'password', 'profit', 'fullname'
 ];
 ```
+
+
+# json_encode(), json_decode()
+
+参考記事
+
+https://qiita.com/shosho/items/34d0e9cc68c376a0a972
+
+## json_encode() : JSON化 
+
+```php
+$array = [];
+$json = json_encode($array,JSON_PRETTY_PRINT);
+// JSON_PRETTY_PRINT にすると、読みやすい形になる。
+```
+
+## json_decode() : 配列化
+
+```php
+$members = Member::all();
+
+$json = json_decode($members, true);
+// 第二引数 true/false は array/object 
+dd($json);
+```
+
+## whereNotNull, whereNull 
+
+```php
+users::whereNotNull('age')->get();
+// age が null ではないレコードを取ってくる。
+users::whereNull('age')->get();
+// age が null のレコードを取ってくる。
+```
+
+## toArray と all()
+
+参考記事
+
+https://qiita.com/ucan-lab/items/47638a7b52090f59c2bf
+
+## array_map
+
+参考記事
+
+https://www.sejuku.net/blog/22549
+
+```php
+$nums = [200, 300, 400, 500];
+$ten = 10;
+
+$array = array_map(function($num) use ($ten) {
+    return $num * $ten;
+}, $nums);
+
+// use は使わなくても良い。
+// $array = [2000, 3000, 4000, 5000];
+```
+
+## array_values
+
+
+## array_column
+
+参考記事
+
+https://qiita.com/jacksuzuki/items/eae943735bda747be09c
+
+pluck なども利用して、配列を自由に作り変えられる。
+
+
+```php
+array array_column ( array $input , mixed $column_key [, mixed $index_key = null ] )
+
+// 第二引数と第三引数は、array のインデックス番号でも指定できる
+
+$users = [
+    [
+    "id" => 1,
+    "name" => "soma",
+    "age" => 23,
+    ],
+    [
+    "id" => 2,
+    "name" => "kate",
+    "age" => 21,
+    ],
+    [
+    "id" => 3,
+    "name" => "Tyle",
+    "age" => 20,
+    ]
+]
+
+$array = array_column($users, 2, 1);
+// $array = [
+//     [
+//         "soma" => 23,
+//     ],
+//     [
+//         "kate" => 21,
+//     ],
+//     [
+//         "Tyle" => 20
+//     ],
+// ]
+```
+
+## array_merge
+
+```php
+$array1 = ["a", "b", "c"];
+$array2 = ["d", "e", "f"];
+
+array3 = array_merge(array1, array2);
+array4 = array_merge(array2, array1);
+
+// array3 = ["a", "b", "c", "d", "e", "f"]
+// array3 = ["d", "e", "f", "a", "b", "c",]
+```
+
+## Guzzle
+Http リクエストを投げられるライブラリ
+
+参考記事
+
+https://qiita.com/yousan/items/2a4d9eac82c77be8ba8b
+
+```php
+$client = new \GuzzleHttp\Client();
+try {
+    $res = $client->post("[URL]", params);
+} catch (\GuzzleHttp\Exception\ClientException $e) {
+    $response = $e->getResponse();
+    return $responseBodyAsString = $response->getBody()->getContents();
+}
+```
+
+## is_null
+
+参考記事
+
+isset, empty, is_nullの違い
+
+https://qiita.com/hirossyi73/items/6e6b9b3ff155a8b05075
+
+```php
+$var = "";
+is_null($var);
+// false
+
+$var = null;
+is_null($var);
+// true
+```
+
+## auth()
+
+```php
+auth()->user();
+// ログインしているユーザーの情報取得
+```
+
+## jsonの返し方
+
+参考記事
+
+https://storehouse-techhack.com/laravel-response/
+
+```php
+public function index(){
+    $array = [
+        "first_name" => "soma",
+        "last_name" => "sekimoto",
+    ];
+
+    return response()->json($array);
+}
+```
+
+
+## Guzzle の例外時のレスポンス拾う
+
+
+```php
+try {
+    $client = new \GuzzleHttp\Client();
+    $response = $client->get('URL');
+} catch
+    (\GuzzleHttp\Exception\ClientException $e) {
+        $responseBodyAsString = $e->getResponse()->getBody()->getContents();
+        return json_decode($responseBodyAsString, true);
+}
+```
+例外にレスポンスをとりたいときは、getResponse や getRequest を利用してからメソッドチェーンで繋ぐ。
+
+## フラッシュメッセージを表示
+
+参考記事
+
+https://qiita.com/usaginooheso/items/6a99e565f16de2f9ddf7
+
+Controller などで、
+
+```php
+public function index(){
+    \Session::flash('message', 'この項目は必須です。')
+}
+```
+
+これで session に'message'という名前で保存される。
+
+view
+
+index.blade.php
+```php
+@if (session('message'))
+<div class='alert alert-primary'>
+    {{session('message')}}
+</div>
+@endif
+```
+
+## array_key_exists
+
+参考記事
+
+https://www.softel.co.jp/blogs/tech/archives/5878
+
+https://hacknote.jp/archives/47307/
+
+```php
+$var = null;
+
+isset($var); // false
+array_key_exists($var); //true
+```
+
+array_key_exists と isset では null のときの結果が違うのと、処理時間もかなり変わることがあるらしい。(array_key_exists の方が遅い)
+
+## 例外をログする report()
+
+```php
+try {
+    //省略
+}
+catch(\Exception $e){
+    report($e)
+}
+```
+
+## json_encode()で定義済み定数を利用する
+
+```php
+
+$array = [
+    "name" => "soma",
+    "age" => 23,
+];
+
+json_encode($array, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)
+
+```
+
+- JSON_PRETTY_PRINT : JSON を見やすい形に整形する。
+- JSON_UNESCAPED_UNICODE : 日本語などのマルチバイトの文字も正しく表示させる。
