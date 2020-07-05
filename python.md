@@ -45,3 +45,62 @@ url = host + '/my_app/login'
 
 res = requests.get(url..... #省略
 ```
+
+# f 文字列
+
+参考記事
+
+https://note.nkmk.me/python-f-strings/
+
+```python
+
+name = 'Soma'
+age = 23
+
+print(f'{name}, {age}years old')
+
+# Soma, 23years old
+```
+
+変数を入れられるだけでなく、書式も指定することができる。
+pip 3.5 以降でしか使えない。
+
+# Beautiful Soup
+
+参考記事
+
+https://qiita.com/Chanmoro/items/db51658b073acddea4ac
+
+スクレイピング対象の URL から取得した レスポンスの HTML から BeautifulSoup オブジェクトを作る。
+
+```python
+
+import requests
+from bs4 import BeautifulSoup
+
+res = requests.get('[URL]')
+
+soup =BeautifulSoup(res.text, 'html.parser')
+
+title_text = soup.find('title').get_text()
+
+print(title_text)
+
+# HTML の title が出力される
+
+```
+
+# with as
+
+何かの処理の開始時と終了時に必須の処理を実行してくれる。
+
+参考記事
+
+https://techacademy.jp/magazine/15823
+
+```python
+with open("file.txt", "r") as fileread
+    print(fileread.read())
+
+# 終了の処理記述しなくて済む
+```
