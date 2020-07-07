@@ -527,7 +527,7 @@ $json = json_decode($members, true);
 dd($json);
 ```
 
-## whereNotNull, whereNull 
+# whereNotNull, whereNull 
 
 ```php
 users::whereNotNull('age')->get();
@@ -536,13 +536,13 @@ users::whereNull('age')->get();
 // age が null のレコードを取ってくる。
 ```
 
-## toArray と all()
+# toArray と all()
 
 参考記事
 
 https://qiita.com/ucan-lab/items/47638a7b52090f59c2bf
 
-## array_map
+# array_map
 
 参考記事
 
@@ -560,10 +560,8 @@ $array = array_map(function($num) use ($ten) {
 // $array = [2000, 3000, 4000, 5000];
 ```
 
-## array_values
 
-
-## array_column
+# array_column
 
 参考記事
 
@@ -609,7 +607,7 @@ $array = array_column($users, 2, 1);
 // ]
 ```
 
-## array_merge
+# array_merge
 
 ```php
 $array1 = ["a", "b", "c"];
@@ -622,7 +620,7 @@ array4 = array_merge(array2, array1);
 // array3 = ["d", "e", "f", "a", "b", "c",]
 ```
 
-## Guzzle
+# Guzzle
 Http リクエストを投げられるライブラリ
 
 参考記事
@@ -638,8 +636,14 @@ try {
     return $responseBodyAsString = $response->getBody()->getContents();
 }
 ```
+## basic 認証の値を引数にいれる
 
-## is_null
+```php
+$client = new \GuzzleHttp\Client();
+$res = $client->get('[URL]', ['auth' => ['[user]', '[password]'])
+```
+
+# is_null
 
 参考記事
 
@@ -657,14 +661,14 @@ is_null($var);
 // true
 ```
 
-## auth()
+# auth()
 
 ```php
 auth()->user();
 // ログインしているユーザーの情報取得
 ```
 
-## jsonの返し方
+# jsonの返し方
 
 参考記事
 
@@ -682,7 +686,7 @@ public function index(){
 ```
 
 
-## Guzzle の例外時のレスポンス拾う
+# Guzzle の例外時のレスポンス拾う
 
 
 ```php
@@ -697,7 +701,7 @@ try {
 ```
 例外にレスポンスをとりたいときは、getResponse や getRequest を利用してからメソッドチェーンで繋ぐ。
 
-## フラッシュメッセージを表示
+# フラッシュメッセージを表示
 
 参考記事
 
@@ -724,7 +728,7 @@ index.blade.php
 @endif
 ```
 
-## array_key_exists
+# array_key_exists
 
 参考記事
 
@@ -741,7 +745,7 @@ array_key_exists($var); //true
 
 array_key_exists と isset では null のときの結果が違うのと、処理時間もかなり変わることがあるらしい。(array_key_exists の方が遅い)
 
-## 例外をログする report()
+# 例外をログする report()
 
 ```php
 try {
@@ -752,7 +756,7 @@ catch(\Exception $e){
 }
 ```
 
-## json_encode()で定義済み定数を利用する
+# json_encode()で定義済み定数を利用する
 
 ```php
 
@@ -767,3 +771,4 @@ json_encode($array, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)
 
 - JSON_PRETTY_PRINT : JSON を見やすい形に整形する。
 - JSON_UNESCAPED_UNICODE : 日本語などのマルチバイトの文字も正しく表示させる。
+
