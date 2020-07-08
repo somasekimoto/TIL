@@ -771,4 +771,3 @@ json_encode($array, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)
 
 - JSON_PRETTY_PRINT : JSON を見やすい形に整形する。
 - JSON_UNESCAPED_UNICODE : 日本語などのマルチバイトの文字も正しく表示させる。
-

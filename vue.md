@@ -202,3 +202,59 @@ window.axios.defaults.headers.common["X-CSRF-TOKEN"] = document
 ```
 
 これで OK
+
+## vue-routerでページ遷移
+
+```js
+
+<template>
+      省略
+        :items='users'
+        @click:item='clickItem'
+      ></v-data-table>
+      省略
+</template>
+<script>
+export default{
+  methods: {
+    clickLink(item){
+      this.$router.push({name:  'edit', params: {id: item.user_id}})
+    }
+
+  }
+}
+</script>
+```
+
+## Material Design Icon の適用手順
+
+```terminal
+$ npm install @mdi/js
+```
+
+```js
+
+<template>
+  <p>{{icons.mdiPlus}}</p>
+</template>
+<script>
+import {
+        mdiAccount,
+        mdiPencil,
+        mdiShareVariant,
+        mdiDelete,
+        mdiPlus,
+        mdiClose,
+    } from '@mdi/js'
+export default {
+    data: () => ({
+        icons: {
+            mdiAccount,
+            mdiPencil,
+            mdiShareVariant,
+            mdiDelete,
+            mdiPlus,
+            mdiClose,
+        },
+</script>
+```
