@@ -65,3 +65,22 @@ $ git revert <commit1> <commit2> --no-commit
 ```
 
 複数のコミットを revert するときに、一度にコミットすることができるので便利。
+
+# git reflog
+
+間違えて git reset してしまった時に、 そのログも含めて表示させるコマンド
+
+```terminal
+$ git reflog -n 4
+d0cab23 HEAD@{0}: d0cab23: updating HEAD
+7938107 HEAD@{1}: commit: 適当なcommit2
+12f8a66 HEAD@{2}: commit: 適当なcommit1
+129d634 HEAD@{3}: 129d634: updating HEAD
+
+$ git reset --hard 7938107
+HEAD is now at 7938107 適当なcommit2
+
+$ git log --oneline
+7938107 適当なcommit2
+12f8a66 適当なcommit1
+```

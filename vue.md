@@ -258,3 +258,20 @@ export default {
         },
 </script>
 ```
+
+## v-dialog
+
+vuetify で modal 表示させる時に使う。
+
+## v-for
+
+data にある配列を iterate させるときなどに使う。
+
+## 値をカンマ区切りにする
+
+```js
+var num = 700000000
+var formatter = new Intl.NumberFormat('ja-JP')
+formatter.format(num)
+// 700,000,000
+```
