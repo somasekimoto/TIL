@@ -39,3 +39,15 @@ const array_3 = array_1.splice(1, 2) // 1 はインデックス番号、2 はそ
 // array_1 = 10
 // array_3 = [20, 30]
 ```
+
+# Object.entries() と map でオブジェクトから配列へ
+
+参考記事
+
+https://qiita.com/kws9/items/6ce80ae1c0fd28a3a9d7
+
+Object.entries() でオブジェクトを配列に変換できるが、同時にmap も使うことによって、自由に配列を操作できる。
+
+```js
+Object.entries(obj).map(([key, value]) => ({key, value}))
+```

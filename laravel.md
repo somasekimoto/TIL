@@ -771,3 +771,24 @@ json_encode($array, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)
 
 - JSON_PRETTY_PRINT : JSON を見やすい形に整形する。
 - JSON_UNESCAPED_UNICODE : 日本語などのマルチバイトの文字も正しく表示させる。
+
+# boot() で DB接続時に共通イベントを走らせる
+
+laravel で DB 保存時とレコード生成時に updated_by と created_by を挿入する。
+(DB にはこの２つのカラムはすでに用意してある。)
+
+Model
+```php
+
+public static function boot()
+    {
+        parent::boot();
+        static::saving(function (Model $model) { // controller で save() が走った時、DB に保存する直前にこのfunctionが実行される。
+            $model->updated_by = auth()->id(); // ログインしているユーザーのID をいれる。
+        });
+        static::creating(function (Model $model) { // レコード生成直前に実行
+            $model->created_by = auth()->id();
+        });
+
+    }
+```
