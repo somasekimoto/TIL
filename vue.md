@@ -275,3 +275,9 @@ var formatter = new Intl.NumberFormat('ja-JP')
 formatter.format(num)
 // 700,000,000
 ```
+
+# watch, computed, method の違い
+
+参考記事
+
+https://qiita.com/yukibe/items/f49fcb935363200916fe

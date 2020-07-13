@@ -792,3 +792,18 @@ public static function boot()
 
     }
 ```
+
+# さまざまな where 句
+
+参考記事
+https://public-constructor.com/laravel-query-builder-where-clauses/
+
+```php
+->whereYear() 
+->whereMonth() 
+->whereDate() 
+->whereDay()  
+->whereTime() 
+->whereBetween() //あるカラムが持つ値に対して範囲検索をする場合に使用
+->whereColumn() //指定した2つのカラムを比較
+```
