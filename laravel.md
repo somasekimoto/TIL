@@ -807,3 +807,63 @@ https://public-constructor.com/laravel-query-builder-where-clauses/
 ->whereBetween() //あるカラムが持つ値に対して範囲検索をする場合に使用
 ->whereColumn() //指定した2つのカラムを比較
 ```
+## orWhere 
+```php
+->where('user_id', 1)->orWhere('optional_column', request()->get('optional_column', 'デフォルト'))
+```
+## where 句の中に function をいれる
+
+```php
+->where(function($q){
+    $name = User::find(1)->name
+    $q->where('name', $name)
+});
+```
+
+# Carbon
+参考記事
+
+https://qiita.com/mackeyTA/items/e8b5e47a9f020a1902c0
+
+```php
+new Carbon('today');
+new Carbon('2020-04-21'); // 2020/4/21
+new Carbon('first day of next month'); // 来月の最初の日
+```
+
+# is_string()
+指定した変数が文字列かどうかを確認するサンプルコード
+
+```php
+$var1 = "1"
+$var2 = 1
+is_string($var1)
+// true
+is_string($var2)
+// false
+```
+
+# request()
+
+リクエストを取得できる。値を取得。
+
+参考記事
+
+https://readouble.com/laravel/6.x/ja/helpers.html
+
+```php
+$value = request('key', 'default')
+// key の value がない時は、デフォルトをセットできる
+```
+
+# 辞書型の配列で、value に function をセットできる
+
+```php
+$array = [
+    'age' => 23,
+    'name' => function($user){
+        return $user->last_name . $user->first_name;
+    },
+    //以下省略
+];
+```

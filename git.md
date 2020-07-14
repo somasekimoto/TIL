@@ -84,3 +84,9 @@ $ git log --oneline
 7938107 適当なcommit2
 12f8a66 適当なcommit1
 ```
+
+# git merge と git rebase
+
+参考記事
+
+https://qiita.com/kkam0907/items/f92dd5288622387409be
