@@ -820,6 +820,12 @@ https://public-constructor.com/laravel-query-builder-where-clauses/
 });
 ```
 
+## JSON 型の取り方
+
+```php
+->where('json->name', 'Soma')
+```
+
 # Carbon
 参考記事
 
@@ -829,6 +835,9 @@ https://qiita.com/mackeyTA/items/e8b5e47a9f020a1902c0
 new Carbon('today');
 new Carbon('2020-04-21'); // 2020/4/21
 new Carbon('first day of next month'); // 来月の最初の日
+$now = Carbon::now();
+$now->format('Y年m月d日') //2020年7月16日
+$now->hour //13
 ```
 
 # is_string()
@@ -866,4 +875,43 @@ $array = [
     },
     //以下省略
 ];
+```
+
+# substr()
+
+文字列から一部の文字列を抽出する。
+
+```php
+// substr([文字列], [開始位置], [個数])
+substr("abcdef", -3, 1); // "d" を返す
+substr("abcdef", -3, -1); // "de" を返す
+```
+
+# validation
+
+参考記事
+
+https://readouble.com/laravel/7.x/ja/validation.html
+
+各リクエストのによって、laravel のバリデーションは少し違う働きをする。
+
+- HTTP リクエスト
+自動で session にエラーメッセージが保存される。なので、blade で $errors 変数が使える。
+
+- AJAX リクエスト
+バリデーションエラーを全部含んだ JSON レスポンスを返す。(422 HTTP ステータスコードで)
+- 複雑なバリデーションは、make:request コマンドでクラスを作成して、そこに記述する
+- validate()メソッドでバリデーションを行う
+- Validatorファサードを利用して、make メソッドでインスタンスを生成して、そこにルールを書くこともできる
+
+
+```php
+$request->validate([ルール])
+
+public function post(){
+    $validator = Validator::make([データ], [ルール]);
+    // 第１引数は、バリデーションを行うデータです。第２引数はそのデータに適用するバリデーションルール。
+    $validator->validate();
+    // 自動リダイレクト機能を使いたい時は validate() でバリデーションする
+}
 ```
