@@ -51,3 +51,19 @@ Object.entries() でオブジェクトを配列に変換できるが、同時に
 ```js
 Object.entries(obj).map(([key, value]) => ({key, value}))
 ```
+
+# スプレッド構文で配列の展開 
+
+参考記事
+
+https://qiita.com/Nossa/items/e6f503cbb95c8e6967f8
+
+```js
+var array = [1, 2, 3]
+var strings = ['a','b','c']
+
+array.push(...strings)
+
+// ... で配列を展開できる
+// array = [1, 2, 3, 'a','b','c']
+```

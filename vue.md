@@ -281,3 +281,34 @@ formatter.format(num)
 参考記事
 
 https://qiita.com/yukibe/items/f49fcb935363200916fe
+
+
+# Vue.set()
+
+参考記事
+
+https://qiita.com/tmak_tsukamoto/items/7623f458448fa7cd01c7
+
+```js
+data: () => {
+  return{
+    users: {}
+  }
+}
+省略
+
+this.users.user1 = {'name': 'Soma', 'age': 23}
+// 検知機構を持たないプロパティになる
+
+Vue.set(this.users, 'user1', {'name': 'Soma', 'age': 23})
+// 検知機構あり this.$set がエイリアス
+```
+
+# dataを極力定義しない
+
+参考記事
+
+https://qiita.com/kahirokunn/items/b4f3ede5b2eb94711880#data%E3%82%92%E6%A5%B5%E5%8A%9B%E5%AE%9A%E7%BE%A9%E3%81%97%E3%81%AA%E3%81%84
+
+data の値が定数などの変更のない値を定義している場合は、computed に移動させる。
+computed は read only で、変更の心配がないのでバグを減らせる。
