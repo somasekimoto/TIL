@@ -110,9 +110,9 @@ fixup! [コミットメッセージ]
 これを過去のコミットと一緒にしたい。
 
 ```terminal
-$ git rebase -i --autosquash [コミットのハッシュ値]
+$ git rebase -i --autosquash [一緒にしたいコミットの1つ前ハッシュ値]
 or
 $ git rebase -i --autosquash HEAD~7
 ```
 
-HEAD~7 は、最新のコミットから7つ遡ったコミットの中で、fixup にされたコミットがあれば、一緒にしてくれます。
+HEAD~7 は、最新のコミットから 7 つ遡ったコミットの中で、fixup にされたコミットがあれば、一緒にしてくれます。

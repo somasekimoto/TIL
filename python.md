@@ -128,3 +128,29 @@ json_file = open('test.json', 'w')
 
 json.dump(dict, json_file)
 ```
+
+# boto3
+
+参考記事
+
+https://boto3.amazonaws.com/v1/documentation/api/latest/index.html
+
+AWS 環境を操作するためのライブラリ
+
+```python
+import boto3
+
+ec2 = boto3.client('ec2')
+# client: 低レベルなインターフェイス
+
+s3 = boto3.resource('s3')
+# resource: clientより高レベルなインターフェイス
+```
+
+# sleep で処理をいったん停止させる
+
+```python
+import time
+
+time.sleep([秒数])
+```
