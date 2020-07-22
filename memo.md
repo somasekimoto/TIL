@@ -123,3 +123,17 @@ https://qiita.com/ryuichi1208/items/e4e1b27ff7d54a66dcd9
 参考記事
 
 https://developer.mozilla.org/ja/docs/Web/HTTP/Status
+
+## excel 関数
+
+### CONCATENATE or CONCAT : 二つ以上の文字列を連結させる
+```
+CONCAT('おはようございます', &B4&'さん')
+```
+
+### TEXT と NOW 関数で日時表示
+
+```
+TEXT(E9,"yyyy-mm-dd")
+TEXT(NOW(),"yyyy-mm-dd hh:mm:ss")
+```

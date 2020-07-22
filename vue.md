@@ -312,3 +312,15 @@ https://qiita.com/kahirokunn/items/b4f3ede5b2eb94711880#data%E3%82%92%E6%A5%B5%E
 
 data の値が定数などの変更のない値を定義している場合は、computed に移動させる。
 computed は read only で、変更の心配がないのでバグを減らせる。
+
+# axios get と post で日本語入りの params を送信した時の違い
+
+参考記事
+
+https://qiita.com/Sekky0905/items/dff3d0da059d6f5bfabf
+
+axios というよりは、 HTTP通信の使用の話だが、
+
+axios.get の第二引数に入れる params 日本語の value が含まれている場合、バックエンドに渡される際に urlencode されたまま扱われることがあるので、注意する。
+
+axios.post に変えれば解決した。

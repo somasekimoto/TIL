@@ -90,3 +90,29 @@ $ git log --oneline
 参考記事
 
 https://qiita.com/kkam0907/items/f92dd5288622387409be
+
+# git commit --fixup と git rebase -i --autosquash
+
+参考記事
+
+https://chaika.hatenablog.com/entry/2019/02/25/170000
+
+あの時のコミットに追加し忘れた記述がある、昔のコミットを修正したい。コミットログを綺麗にしたい。というときに使えるコマンドセット。
+
+```terminal
+$ git commit --fixup [コミットのハッシュ値]
+```
+
+fixup! [コミットメッセージ]
+
+というコミットができる。
+
+これを過去のコミットと一緒にしたい。
+
+```terminal
+$ git rebase -i --autosquash [コミットのハッシュ値]
+or
+$ git rebase -i --autosquash HEAD~7
+```
+
+HEAD~7 は、最新のコミットから7つ遡ったコミットの中で、fixup にされたコミットがあれば、一緒にしてくれます。

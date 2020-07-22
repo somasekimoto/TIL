@@ -205,6 +205,42 @@ $result = array_filter(
 
 in_array, array_search というのもあるらしい。
 
+## js と php の配列・オブジェクトの解釈の違いから起こりうるエラー
+
+```php
+$array = [
+    0 => ['name' => 'Kate', 'age' => 19],
+    1 => ['name' => 'Soma', 'age' => 23],
+    2 => ['name' => 'Tailor', 'age' => 17],
+]
+
+$new_array = array_filter($array, function($member){
+    return $member->age < 20;
+})
+
+// $new_array = [
+//     0 => ['name' => 'Kate', 'age' => 19], 
+//     2 => ['name' => 'Tailor', 'age' => 17]
+// ]
+//　php ではこれは配列として解釈される。
+```
+仮にこのような配列をフロント側(vue.js など)に返す場合は注意が必要
+配列を返したつもりでも、オブジェクトとして解釈されてしまう。
+
+```php
+$new_array = array_values(
+    array_filter($array, function($member){
+        return $member->age < 20;
+    })
+)
+
+// $new_array = [
+//     0 => ['name' => 'Kate', 'age' => 19], 
+//     1 => ['name' => 'Tailor', 'age' => 17]
+// ]
+// インデックス値が振り直されるので、こうすれば配列のままjs側に渡せる
+```
+
 # Str::random()
 
 laravel6.0 系から、文字列や配列のヘルパはデフォルトから削除されたことにより、str_random() が使えなくな離ました。
@@ -915,3 +951,10 @@ public function post(){
     // 自動リダイレクト機能を使いたい時は validate() でバリデーションする
 }
 ```
+
+# is_int と is_numeric
+is_int も is_numeric も整数かどうかを判断するメソッドだが、
+
+- is_numeric は フォームなどに入力された数値文字列にも true を返す。
+
+- is_int は数値文字列には false を返す。
