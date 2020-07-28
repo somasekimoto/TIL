@@ -67,3 +67,10 @@ array.push(...strings)
 // ... で配列を展開できる
 // array = [1, 2, 3, 'a','b','c']
 ```
+
+# new Date()
+
+```js
+
+new Date()
+```

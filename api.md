@@ -1,6 +1,7 @@
 # Slack API
 
-## 1. App を作る
+## 設定方法
+### 1. App を作る
 
 "slack api" で検索して、公式のページにいく。
 
@@ -8,7 +9,7 @@
 
 create new app をクリックして、アプリを制作。
 
-## 2. 設定
+### 2. 設定
 
 左のバーの 'Basic Information' をクリック。
 
@@ -18,12 +19,38 @@ create new app をクリックして、アプリを制作。
 
 ここで一旦は、app 制作完了。
 
-## 3. 利用
+### 3. 利用
 
 公式の Document と、ご自身のプランをみて、利用できる api を選択し、権限に加えていく。
 
 Tester などを利用して、実際のアプリで使う前に、テストを行う。それから、アプリに応用。
 
+
+## url の見方
+
+```
+https://app.slack.com/client/[ワークスペースID]/[ユーザー or チャンネル slack ID]
+```
+
+
+## chat.postMessage
+
+参考記事
+
+グループメンションをつける
+text に <!subteam^> をつける
+
+```php
+$client->Post($url, [
+        'form_params' => [
+            "token" =>　[token],
+            "channel" => [slack_id],
+            'text' => "<!subteam^" . [groupId] . ">\n" . "[message]",
+        ]
+]);
+```
+
+ groupId は usergroups.list api で確認する
 
 # Google App Script
 
