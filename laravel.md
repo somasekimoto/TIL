@@ -958,3 +958,10 @@ is_int も is_numeric も整数かどうかを判断するメソッドだが、
 - is_numeric は フォームなどに入力された数値文字列にも true を返す。
 
 - is_int は数値文字列には false を返す。
+
+# gettype
+
+変数の型を取得
+
+参考記事
+https://www.php.net/manual/ja/function.gettype.php
