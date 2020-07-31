@@ -68,9 +68,21 @@ array.push(...strings)
 // array = [1, 2, 3, 'a','b','c']
 ```
 
-# new Date()
+# papaparse
+参考記事
 
-```js
+https://www.papaparse.com
+ 
+# encoding-japanese
 
-new Date()
-```
+参考記事
+
+https://github.com/polygonplanet/encoding.js/blob/master/README_ja.md
+
+文字コードの変換
+
+# file-saver
+
+参考記事
+
+https://www.npmjs.com/package/file-saver
