@@ -965,3 +965,15 @@ is_int も is_numeric も整数かどうかを判断するメソッドだが、
 
 参考記事
 https://www.php.net/manual/ja/function.gettype.php
+
+# Model 内で使える
+
+参考記事
+
+https://qiita.com/tmf16/items/e9169b416ab4011a3a09
+
+```php
+getDirty() // 引数に入れたキーが変更されていればその値を返す
+isDirty() // 値が変更されたかどうかを返す
+getOriginal() // 変更される前の値を返す
+```
