@@ -72,6 +72,45 @@ $ clasp pull
 - **Google App Script の有効化を忘れない**
 - **Google アカウントの認証していないと、エラーがでる。("もう少し待ってから試してください" みたいな)**
 
+## GAS の基本的なメソッド
+
+```js
+function doPost(e){
+    var c = e.postData.contents 
+    var contents = JSON.parse(e)
+    // 引数で送られてきたパラメータを取得する
+    var title = contents.title
+
+    var spreadsheet = SpreadsheetApp.create(title)
+    // 新しいスプレッドシートを作成する
+
+    var spreadsheet = SpreadsheetApp.openById(spreadsheetId)
+    // 既存のスプレッドシートを取得
+
+    var copiedSpreadsheet = spreadsheet.copy(title)
+    // スプレッドシートを複製
+
+    var sheet = spreadsheet.getSheets()[0] 
+    // 一番最初のシートを取得
+
+    var sheet = spreadsheet.insertSheet()
+    // 新しいシートを追加する
+
+    sheet.getRange([開始行], [開始列], [行数], [列数]).setValues([配列]);
+    // 開始位置や範囲の指定をし、値を挿入する。(配列の数と、行数や列数が同じでないとエラーが出る)
+    sheet.getRange([開始行], [開始列], [行数], [列数]).createFilter();
+    // フィルターをかける
+
+    sheet.setName([シート名])
+    // シート名をセットする
+
+    var url = spreadsheet.getUrl()
+    // スプレッドシートの URL を取得
+
+    ContentService.createTextOutput(JSON.stringify({hoge: 'fuga'})).setMimeType(ContentService.MimeType.JSON);
+}
+```
+
 # AKASHI API
 
 - 50以上のAPI トークンは作成できない。

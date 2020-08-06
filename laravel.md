@@ -596,6 +596,20 @@ $array = array_map(function($num) use ($ten) {
 // $array = [2000, 3000, 4000, 5000];
 ```
 
+## array_map で index を使いたい時
+
+参考記事
+
+https://qiita.com/kazuhei/items/87acf094d82cc58afe72
+
+第三引数に、range メソッドを使う
+
+```php
+array_map(function($array, $index){
+    return $array;
+}, $arrays, range(0, count($arrays)));
+```
+
 
 # array_column
 
