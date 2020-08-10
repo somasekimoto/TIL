@@ -124,44 +124,43 @@ https://qiita.com/ryuichi1208/items/e4e1b27ff7d54a66dcd9
 
 https://developer.mozilla.org/ja/docs/Web/HTTP/Status
 
-## excel 関数
+## grepコマンド
 
-### CONCATENATE or CONCAT : 二つ以上の文字列を連結させる
-```
-CONCAT('おはようございます', &B4&'さん')
-```
+参考記事
 
-### TEXT と NOW 関数で日時表示
+https://eng-entrance.com/linux-command-grep#-E
 
 ```
-TEXT(E9,"yyyy-mm-dd")
-TEXT(NOW(),"yyyy-mm-dd hh:mm:ss")
+cat [ファイル名] | grep -E '[検索正規表現 or 検索したい文字列]'
 ```
 
-### MATCH, INDEX
+## arp コマンド
+ARPテーブル一覧を表示させるためのコマンド。
+
+ARP は IPアドレスから MAC アドレスを調べる仕組み
+
+参考記事
+
+https://wa3.i-3-i.info/word11340.html
 
 ```
-MATCH([値], [列指定], 0)  0は全一致
-MATCH(A2, B:B, 0) 
-
-INDEX([列指定], [行番号]) 
-INDEX(A:A, B2)
-INDEX(A:A, MATCH(A2, B:B))
+arp -a
+? (192.168.250.254) at 74:4d:24:e5:ae:47 on en0 ifscope [ethernet]
+? (224.0.0.251) at 1:0:5e:0:0:fe on en0 ifscope permanent [ethernet]
+? (230.230.230.230) at 1:0:5e:46:e6:e6 on en0 ifscope permanent [ethernet]
+? (239.255.255.250) at 1:0:6e:4f:ff:fa on en0 ifscope permanent [ethernet]
 ```
 
-### if, iferror
 
-条件分岐
 
-```
-if([条件], [条件を満たした時の値], [満たさない時の値])
-iferror([第一引数], [第一引数がエラーのときの値])
-```
+## ping
 
-### IMPORTRANGE
+クライアントからサーバまでIPパケットが到達するかどうか確認をするコマンド
 
-他のスプレッドシートからデータを表示させる
+参考記事
+
+https://qiita.com/hana_shin/items/c31b0d05a91244c4db83
 
 ```
-IMPORTRANGE("https://docs.google.com/spreadsheets/d/XXXXXXXXX", "[シート名]!A4:D20")
+ping [IP アドレス]
 ```

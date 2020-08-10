@@ -991,3 +991,39 @@ getDirty() // 引数に入れたキーが変更されていればその値を返
 isDirty() // 値が変更されたかどうかを返す
 getOriginal() // 変更される前の値を返す
 ```
+
+
+# list
+一連の変数に値を代入できる。
+
+```php
+$array = ['hoge', 'fuga', 'hage']
+list($a, $b, $c) = $array;
+// $a = 'hoge', $b = 'fuga', $c = 'hage'
+```
+
+# fgets
+ファイルポインタから1行取得
+
+参考記事
+
+https://www.php.net/manual/ja/function.fgets.php
+
+```php
+fgets($handle, [$length])
+// $handle には、fopen などで開いたファイルのファイルポインタを指定。
+// $length を指定する場合は、バイトで書く
+
+<?php
+$input = fgets(STDIN)
+echo $input;
+// 標準入力を取得する場合はこれでも良い。
+?>
+```
+
+# trim 
+文字列の先頭と末尾にある空白を取り除く。
+
+```php
+$input = trim(fgets(STDIN));
+```
