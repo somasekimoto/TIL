@@ -57,3 +57,41 @@ resources:
         Targets:
           - Id: arn:aws:lambda:ap-northeast-1:9999999999:function: [Lambda の関数名]
 ```
+# environment にセットする環境変数を file ごとに管理
+
+
+env/stg.yml
+
+```yml
+HOST: hoge
+DB_NAME: users
+DATABASE: fuga
+DB_PASSWORD: hogehoge
+```
+
+env/prod.yml
+
+```yml
+HOST: fuga
+DB_NAME: users
+DATABASE: hoge
+DB_PASSWORD: fugafuga
+```
+
+serverless.yml
+
+```yml
+provider:
+  name: aws
+  runtime: python3.7
+  region: ap-northeast-1
+  stage: ${opt:stage, 'stg'}
+  environment: ${file(./env/${self:provider.stage}.yml)}
+```
+
+# sls remove
+デプロイされた function を削除する時に使う。
+
+```terminal
+sls remove
+```

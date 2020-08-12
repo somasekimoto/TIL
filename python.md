@@ -145,6 +145,10 @@ ec2 = boto3.client('ec2')
 
 s3 = boto3.resource('s3')
 # resource: clientより高レベルなインターフェイス
+
+ssm = boto3.client('ssm')
+ssm.get_parameter(Name=[ssm にある環境変数])['Parameter']['Value']
+# ssmから環境変数を取ってくることもできる
 ```
 
 # sleep で処理をいったん停止させる
@@ -154,3 +158,62 @@ import time
 
 time.sleep([秒数])
 ```
+
+# pymysql
+mysql と接続・操作するためのライブラリ
+
+
+## 接続
+
+```python
+conn = pymysql.connect(
+    [host],
+    [db_username],
+    [db_password(alias は passwd)],
+    [database(alias は db)],
+    [port],
+)
+```
+parameterは他にもある
+
+https://pymysql.readthedocs.io/en/latest/modules/connections.html
+
+
+## DB操作
+
+
+```python
+with conn.cursor(pymysql.cursors.DictCursor) as cur:
+    # Dict を返す
+    cur.execute('[sql文]')
+    # sql文実行
+    all_results = cur.fetchall()
+    # 結果を取得
+```
+
+# items(), keys(), values()
+dictのforループ処理時などに使う。
+
+
+参考記事
+
+https://note.nkmk.me/python-dict-keys-values-items/
+
+```python
+jp_dict = {
+    "hoge": "fuga",
+    "hogehoge": "fugafuga",
+}
+for key, value in jp_dict.items():
+    text = key + "は、" + value + "です。\n"
+    print(text)
+# hogeは、fugaです。
+# dict から key, value を使ってiterate したい場合は、items()を使う
+
+for key in jp_dict.keys():
+    text = key + "は、" + jp_dict[key] + "です。\n"
+    print(text)
+# hogeは、fugaです。
+# key だけ、value だけ iterate することもできる
+```
+
