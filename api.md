@@ -1,6 +1,7 @@
 # Slack API
 
 ## 設定方法
+
 ### 1. App を作る
 
 "slack api" で検索して、公式のページにいく。
@@ -25,13 +26,11 @@ create new app をクリックして、アプリを制作。
 
 Tester などを利用して、実際のアプリで使う前に、テストを行う。それから、アプリに応用。
 
-
 ## url の見方
 
 ```
 https://app.slack.com/client/[ワークスペースID]/[ユーザー or チャンネル slack ID]
 ```
-
 
 ## chat.postMessage
 
@@ -50,7 +49,7 @@ $client->Post($url, [
 ]);
 ```
 
- groupId は usergroups.list api で確認する
+groupId は usergroups.list api で確認する
 
 # Google App Script
 
@@ -61,6 +60,7 @@ https://qiita.com/HeRo/items/4e65dcc82783b2766c03
 https://qiita.com/ume3003/items/cd9d05dff014952a73f8
 
 大まかな流れ
+
 ```
 $ npm i clasp -g
 $ clasp login
@@ -75,47 +75,68 @@ $ clasp pull
 ## GAS の基本的なメソッド
 
 ```js
-function doPost(e){
-    var c = e.postData.contents 
-    var contents = JSON.parse(e)
-    // 引数で送られてきたパラメータを取得する
-    var title = contents.title
+function doPost(e) {
+  var c = e.postData.contents
+  var contents = JSON.parse(e)
+  // 引数で送られてきたパラメータを取得する
+  var title = contents.title
 
-    var spreadsheet = SpreadsheetApp.create(title)
-    // 新しいスプレッドシートを作成する
+  var spreadsheet = SpreadsheetApp.create(title)
+  // 新しいスプレッドシートを作成する
 
-    var spreadsheet = SpreadsheetApp.openById(spreadsheetId)
-    // 既存のスプレッドシートを取得
+  var spreadsheet = SpreadsheetApp.openById(spreadsheetId)
+  // 既存のスプレッドシートを取得
 
-    var copiedSpreadsheet = spreadsheet.copy(title)
-    // スプレッドシートを複製
+  var copiedSpreadsheet = spreadsheet.copy(title)
+  // スプレッドシートを複製
 
-    var sheet = spreadsheet.getSheets()[0] 
-    // 一番最初のシートを取得
+  var sheet = spreadsheet.getSheets()[0]
+  // 一番最初のシートを取得
 
-    var sheet = spreadsheet.insertSheet()
-    // 新しいシートを追加する
+  var sheet = spreadsheet.insertSheet()
+  // 新しいシートを追加する
 
-    sheet.getRange([開始行], [開始列], [行数], [列数]).setValues([配列]);
-    // 開始位置や範囲の指定をし、値を挿入する。(配列の数と、行数や列数が同じでないとエラーが出る)
-    sheet.getRange([開始行], [開始列], [行数], [列数]).createFilter();
-    // フィルターをかける
+  sheet.getRange([開始行], [開始列], [行数], [列数]).setValues([配列])
+  // 開始位置や範囲の指定をし、値を挿入する。(配列の数と、行数や列数が同じでないとエラーが出る)
+  sheet.getRange([開始行], [開始列], [行数], [列数]).createFilter()
+  // フィルターをかける
 
-    sheet.setName([シート名])
-    // シート名をセットする
+  sheet.setName([シート名])
+  // シート名をセットする
 
-    var url = spreadsheet.getUrl()
-    // スプレッドシートの URL を取得
+  var url = spreadsheet.getUrl()
+  // スプレッドシートの URL を取得
 
-    ContentService.createTextOutput(JSON.stringify({hoge: 'fuga'})).setMimeType(ContentService.MimeType.JSON);
+  ContentService.createTextOutput(JSON.stringify({ hoge: "fuga" })).setMimeType(
+    ContentService.MimeType.JSON
+  )
 }
 ```
 
 # AKASHI API
 
-- 50以上のAPI トークンは作成できない。
+- 50 以上の API トークンは作成できない。
 
 参考記事
 
 https://akashi.zendesk.com/hc/ja/articles/115000475854-AKASHI-%E5%85%AC%E9%96%8BAPI-%E4%BB%95%E6%A7%98
 
+# Linebot Messaging API
+
+python
+
+```python
+from linebot import (
+    LineBotApi, WebhookParser
+)
+
+
+from linebot.exceptions import (
+    InvalidSignatureError, LineBotApiError
+)
+
+from linebot.models import (
+    TextSendMessage, ImageSendMessage
+)
+
+```
