@@ -151,6 +151,17 @@ ssm.get_parameter(Name=[ssm にある環境変数])['Parameter']['Value']
 # ssmから環境変数を取ってくることもできる
 ```
 
+## s3
+
+```python
+s3 = boto3.resource('s3')
+bucket = s3.Bucket([バケット名])
+# バケットを選択する
+
+bucket.put_pbject(Key, Body)
+s3.meta.client.upload_file(Key, BucketName, file_name)
+```
+
 # sleep で処理をいったん停止させる
 
 ```python
@@ -160,8 +171,8 @@ time.sleep([秒数])
 ```
 
 # pymysql
-mysql と接続・操作するためのライブラリ
 
+mysql と接続・操作するためのライブラリ
 
 ## 接続
 
@@ -174,13 +185,12 @@ conn = pymysql.connect(
     [port],
 )
 ```
-parameterは他にもある
+
+parameter は他にもある
 
 https://pymysql.readthedocs.io/en/latest/modules/connections.html
 
-
-## DB操作
-
+## DB 操作
 
 ```python
 with conn.cursor(pymysql.cursors.DictCursor) as cur:
@@ -192,8 +202,8 @@ with conn.cursor(pymysql.cursors.DictCursor) as cur:
 ```
 
 # items(), keys(), values()
-dictのforループ処理時などに使う。
 
+dict の for ループ処理時などに使う。
 
 参考記事
 
