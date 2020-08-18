@@ -217,3 +217,21 @@ for key in jp_dict.keys():
 # key だけ、value だけ iterate することもできる
 ```
 
+# join
+
+```python
+array = ['Ruby', 'Java', 'Python']
+
+text = '/'.join(array)
+# Ruby/Java/Python
+```
+
+# 内包表記
+
+一行でイテレーションして、新しい辞書型 もしくは 配列を返す。
+
+```python
+dict = {key1: value1, key2:value2, key3: value3}
+
+'・'.join(value): key for key, value in dict.items()
+```

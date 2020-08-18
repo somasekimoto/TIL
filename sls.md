@@ -95,3 +95,12 @@ provider:
 ```terminal
 sls remove
 ```
+
+# deploymentBucket
+
+serverless.yml にデプロイ先のバケットを指定する
+
+```yml
+provider:
+  deploymentBucket: bucketName
+```

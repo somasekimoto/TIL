@@ -26,3 +26,21 @@ grant [権限] on [データベース].[テーブル] to '[ユーザー名]'@'[�
 flush privileges;
 # 権限の変更をデータベースに反映させる。
 ```
+
+# if 
+if([条件],[処理],[条件を満たさない時の処理])
+
+# concat_ws
+
+```sql
+select concat_ws('/', name, age, address) as personal_info from users
+/*/ 第一引数で区切り文字を入れられる
+```
+
+
+# ifnull
+第一引数が NULL のときに第二引数の値を返す。
+
+```sql
+select ifnull(address, 0) from users
+```
