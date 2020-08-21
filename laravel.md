@@ -1027,3 +1027,50 @@ echo $input;
 ```php
 $input = trim(fgets(STDIN));
 ```
+
+# leftJoin
+
+sql でいう left join
+
+参考記事
+
+https://readouble.com/laravel/7.x/ja/queries.html
+
+```php
+\App\Users::leftJoin('posts', 'users.id', '=', 'posts.user_id')
+```
+
+## leftjoinした時に同じ名前のカラムの値が上書きされる。
+
+参考記事
+
+https://qiita.com/pipiox/items/395bef543e16c93a1fa6
+
+```php
+\App\Users::leftJoin('posts', 'users.id', '=', 'posts.user_id')
+    ->select(['users.name', 'posts.title'])
+    ->get()
+
+//array(
+//    "name" => "Soma",
+//    "title" => "タイトル"
+//)
+```
+
+# strtotime
+
+date 型 の値の操作時に使う。
+
+参考記事
+
+https://pentan.info/php/strtotime_month.html
+
+https://www.flatflag.nir87.com/modify-495#i-5
+
+ 先月の日付とる場合は注意が必要
+
+```php
+date('Y-m-d', strtotime('-1 month')); 
+date('Y-m-d', strtotime('2016-3-31 -1 month')); // 2016-03-02
+date('Y-m-d', strtotime('last day of previous month', $date));　//2016-02-29
+```

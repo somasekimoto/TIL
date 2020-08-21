@@ -44,3 +44,9 @@ select concat_ws('/', name, age, address) as personal_info from users
 ```sql
 select ifnull(address, 0) from users
 ```
+
+# group_concat
+
+```sql
+select name, age, group_concat(concat(user_id, last_name)) from users where  age = 23  group by member_cd
+```

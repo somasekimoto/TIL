@@ -51,6 +51,12 @@ $client->Post($url, [
 
 groupId は usergroups.list api で確認する
 
+メンションをつける
+
+```python
+'<@' + [ユーザーID] + '>'
+```
+
 # Google App Script
 
 参考記事
