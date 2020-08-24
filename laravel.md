@@ -1074,3 +1074,15 @@ date('Y-m-d', strtotime('-1 month'));
 date('Y-m-d', strtotime('2016-3-31 -1 month')); // 2016-03-02
 date('Y-m-d', strtotime('last day of previous month', $date));　//2016-02-29
 ```
+
+# preg_match
+
+preg_match([正規表現], [文字列], [マッチした文字列を格納する変数名])
+
+```php
+$text = 'Done is better than perfect';
+$regex = pre_match('/better/', $text, $better);
+// $regex = 1; match する場合は trueを返す。
+// $better = ["better"]
+// 配列で格納される。
+```

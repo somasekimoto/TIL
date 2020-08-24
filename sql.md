@@ -50,3 +50,11 @@ select ifnull(address, 0) from users
 ```sql
 select name, age, group_concat(concat(user_id, last_name)) from users where  age = 23  group by member_cd
 ```
+
+# generated as
+
+一つのカラムの値に対して処理された値を別カラムに保存する時に使う。
+
+```sql
+alter table [table_name] add column [column_name] generated as (another_column_name * 2) stored;
+```
