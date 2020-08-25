@@ -324,3 +324,24 @@ axios というよりは、 HTTP通信の使用の話だが、
 axios.get の第二引数に入れる params 日本語の value が含まれている場合、バックエンドに渡される際に urlencode されたまま扱われることがあるので、注意する。
 
 axios.post に変えれば解決した。
+
+# @keydown
+
+参考記事
+
+https://stackoverflow.com/questions/33257379/how-to-fire-an-event-when-v-model-changes/33257642#33257642
+
+```js
+<input @keydown="foo" v-model >
+// 文字を入力するたびにイベント発火する
+
+<input @change="foo" v-model >
+// enter を押すもしくはどこか別の場所をクリックするたびにイベント発火する
+```
+
+# @keypress
+
+```js
+<v-text-field @keypress.enter.native="goEvent()"></v-text-field>
+// エンターを押すとイベント発火するように設定
+```
