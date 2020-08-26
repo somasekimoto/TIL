@@ -1086,3 +1086,5 @@ $regex = pre_match('/better/', $text, $better);
 // $better = ["better"]
 // 配列で格納される。
 ```
+
+# 
