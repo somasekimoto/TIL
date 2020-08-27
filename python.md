@@ -245,3 +245,29 @@ dict = {key1: value1, key2:value2, key3: value3}
 
 '・'.join(value): key for key, value in dict.items()
 ```
+
+# Tweepy
+
+参考記事
+
+https://qiita.com/kitarikes/items/543ab75a379f0bf903cc
+
+```python
+import tweepy
+
+consumer_key = '*********************************'
+consumer_secret = '*************************************'
+access_token = '*******************************************'
+access_token_secret = '****************************************'
+
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+auth = tweepy.AppAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(access_token, access_token_secret)
+
+api = tweepy.API(auth)
+
+public_tweets = api.home_timeline()
+for tweet in public_tweets:
+    print('-------------------------')
+    print(tweet.text)
+```
