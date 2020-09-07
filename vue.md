@@ -345,3 +345,7 @@ https://stackoverflow.com/questions/33257379/how-to-fire-an-event-when-v-model-c
 <v-text-field @keypress.enter.native="goEvent()"></v-text-field>
 // エンターを押すとイベント発火するように設定
 ```
+
+# activated(), deactivated()
+
+コンポーネントが活性化・非活性化する時に呼び出されるライフサイクルメソッド

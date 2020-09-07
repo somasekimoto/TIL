@@ -128,8 +128,10 @@ https://qiita.com/akasakas/items/768c0b563b96f8a9be9d
 ```sh
 git stash
 git stash pop
+git stash pop stash@{1}
 # 退避した変更を適応して stash を削除する
 git stash apply
+git stash apply stash@{1}
 # 退避した変更を適応する
 git stash list 
 # 退避させた変更のリストが出る。

@@ -966,6 +966,21 @@ public function post(){
 }
 ```
 
+## required_if, required_unless
+
+```php
+$v = Validator::make(
+    $array,
+    [
+        'last_name' => 'required',
+        'first_name' => 'nullable',
+        'weight' => 'nullable|required_if:last_name,hoge',
+        'height' => 'nullable|required_unless:first_name,fuga',
+    ]
+)
+
+```
+
 # is_int と is_numeric
 is_int も is_numeric も整数かどうかを判断するメソッドだが、
 
@@ -1087,4 +1102,28 @@ $regex = pre_match('/better/', $text, $better);
 // 配列で格納される。
 ```
 
-# 
+# \Illuminate\Support\Facades\DB
+
+database.php
+```php
+'connections' => [
+    'mysql' => [
+                'driver' => 'mysql',
+                'url' => env('DATABASE_URL'),
+                'host' => env('DB_HOST', '127.0.0.1'),
+                'port' => env('DB_PORT', '3306'),
+                'database' => env('DB_DATABASE', 'laravel'),
+                'username' => env('DB_USERNAME', 'laravel'),
+                'password' => env('DB_PASSWORD', ''),
+                'unix_socket' => env('DB_SOCKET', ''),
+                'charset' => 'utf8mb4',
+                'collation' => 'utf8mb4_unicode_ci',
+            ],
+]
+```
+
+
+controller
+```php
+$user = \Illuminate\Support\Facades\DB::connection('mysql')->table('users')->where('user_id', 23)->first();
+```
