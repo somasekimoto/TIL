@@ -271,3 +271,28 @@ for tweet in public_tweets:
     print('-------------------------')
     print(tweet.text)
 ```
+
+# 標準入力
+
+```python
+a = input()
+b = input().strip()
+array = input().strip().split()
+# ['3', '4', '5', '6']
+array = map(int, input().strip().split())
+# <map object at 0x7efc278260a0>  map オブジェクト
+array = list(map(int, input().strip().split()))
+# [3, 4, 5, 6] list
+```
+
+# for で index を扱う方法
+
+```python
+array = ['hoge', 'fuga', 'hogehoge', 'fugafuga']
+for i in range(len(array)):
+    print(array[i])
+# hoge
+# fuga
+# hogehoge
+# fugafuga
+```
