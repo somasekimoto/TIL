@@ -349,3 +349,15 @@ https://stackoverflow.com/questions/33257379/how-to-fire-an-event-when-v-model-c
 # activated(), deactivated()
 
 コンポーネントが活性化・非活性化する時に呼び出されるライフサイクルメソッド
+
+# v-form で enter で submit するのを無効にする。
+
+```js
+<v-form @submit.prevent>
+  <v-text-field
+    v-model="name"
+    @input="hogehoge"
+  >
+  </v-text-field>
+</v-form>
+```

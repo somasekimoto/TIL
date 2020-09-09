@@ -295,4 +295,17 @@ for i in range(len(array)):
 # fuga
 # hogehoge
 # fugafuga
+
+# もしくは、enumerate を使う。
+for i, item in enumerate(array):
+    print(i)
+    print(item)
+# 0
+# hoge
+# 1
+# fuga
+# 2
+# hogehoge
+# 3
+# fugafuga
 ```
