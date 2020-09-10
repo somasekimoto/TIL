@@ -309,3 +309,23 @@ for i, item in enumerate(array):
 # 3
 # fugafuga
 ```
+
+# twitter 検索術
+
+tweepy で search メソッド使用時に使える。
+
+参考記事
+
+https://gist.github.com/cucmberium/e687e88565b6a9ca7039
+
+```python
+cric_tweet = tweepy.Cursor(
+        api.search, q='#松岡茉優 filter:retweets filter:images min_faves:10', lang='ja', result_type='mixed').items(40)
+    print(cric_tweet)
+    for tweet in cric_tweet:
+        print(tweet.created_at)
+        print(tweet.text)
+        print(tweet.lang)
+        print(tweet.favorite_count)
+
+```
