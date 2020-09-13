@@ -329,3 +329,11 @@ cric_tweet = tweepy.Cursor(
         print(tweet.favorite_count)
 
 ```
+
+# 切り捨て除算
+
+```python
+n = 26
+n // 5
+# 5 ... 5.2 の小数点以下を切り捨て、整数を返す。
+```
