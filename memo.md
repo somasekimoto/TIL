@@ -24,6 +24,12 @@
 - la = ls -a
 - ll = ls -l
 - lla = ls -lla
+- gst = git stash
+- gstl = git stash list
+- gstp = git stash pop
+- gsta = git stash apply
+- gb = git branch
+- gch = git checkout
 
 ---
 

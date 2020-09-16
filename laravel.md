@@ -1127,3 +1127,20 @@ controller
 ```php
 $user = \Illuminate\Support\Facades\DB::connection('mysql')->table('users')->where('user_id', 23)->first();
 ```
+
+# $fillable(ホワイトリスト方式) と $guarded(ブラックリスト方式) 
+参考記事
+
+https://qiita.com/toro_ponz/items/b33c757cb7ba5bb48ed4
+
+```php
+protected $fillable = [
+	'column_name'
+];
+// 操作可能なカラムを指定する。(指定したカラム以外は操作を拒否される)
+
+protected $guarded = [
+	'column_name'
+];
+//操作拒否したいカラムを指定する。
+```

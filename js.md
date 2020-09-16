@@ -21,6 +21,11 @@ $ npm run dev
 
 なので、public/ に何か手を加える時は、npm run dev してからする必要がある。
 
+# npm run hot での注意点
+
+参考記事
+https://vue-loader.vuejs.org/guide/hot-reload.html#state-preservation-rules
+
 # slice() と splice() の違い
 
 参考記事
