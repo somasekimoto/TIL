@@ -361,3 +361,41 @@ https://stackoverflow.com/questions/33257379/how-to-fire-an-event-when-v-model-c
   </v-text-field>
 </v-form>
 ```
+
+# $refs で親コンポーネントから子コンポーネントのメソッド呼び出し
+
+
+FugaComponent.vue(親)
+```js
+<template>
+  <HogeComponent
+  ref="hoge"
+  ></HogeComponent>
+</template>
+<script>
+export default{
+  methods:{
+    fuga(){
+      let params = {hoge: 'hoge', fuga: 'fuga'}
+      this.$refs.hoge.hogehoge(params)
+    }
+  }
+}
+</script>
+```
+
+HogeComponent.vue(子)
+
+```js
+<script>
+export default{
+  methods:{
+    hogehoge(params){
+      console.log('Hello!!')
+      console.log(params.hoge)
+      console.log(params.fuga)
+    }
+  }
+}
+</script>
+```
