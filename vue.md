@@ -203,7 +203,7 @@ window.axios.defaults.headers.common["X-CSRF-TOKEN"] = document
 
 これで OK
 
-## vue-routerでページ遷移
+## vue-router でページ遷移
 
 ```js
 
@@ -271,7 +271,7 @@ data にある配列を iterate させるときなどに使う。
 
 ```js
 var num = 700000000
-var formatter = new Intl.NumberFormat('ja-JP')
+var formatter = new Intl.NumberFormat("ja-JP")
 formatter.format(num)
 // 700,000,000
 ```
@@ -282,7 +282,6 @@ formatter.format(num)
 
 https://qiita.com/yukibe/items/f49fcb935363200916fe
 
-
 # Vue.set()
 
 参考記事
@@ -291,20 +290,20 @@ https://qiita.com/tmak_tsukamoto/items/7623f458448fa7cd01c7
 
 ```js
 data: () => {
-  return{
-    users: {}
+  return {
+    users: {},
   }
 }
 省略
 
-this.users.user1 = {'name': 'Soma', 'age': 23}
+this.users.user1 = { name: "Soma", age: 23 }
 // 検知機構を持たないプロパティになる
 
-Vue.set(this.users, 'user1', {'name': 'Soma', 'age': 23})
+Vue.set(this.users, "user1", { name: "Soma", age: 23 })
 // 検知機構あり this.$set がエイリアス
 ```
 
-# dataを極力定義しない
+# data を極力定義しない
 
 参考記事
 
@@ -319,7 +318,7 @@ computed は read only で、変更の心配がないのでバグを減らせる
 
 https://qiita.com/Sekky0905/items/dff3d0da059d6f5bfabf
 
-axios というよりは、 HTTP通信の使用の話だが、
+axios というよりは、 HTTP 通信の使用の話だが、
 
 axios.get の第二引数に入れる params 日本語の value が含まれている場合、バックエンドに渡される際に urlencode されたまま扱われることがあるので、注意する。
 
@@ -362,10 +361,10 @@ https://stackoverflow.com/questions/33257379/how-to-fire-an-event-when-v-model-c
 </v-form>
 ```
 
-# $refs で親コンポーネントから子コンポーネントのメソッド呼び出し
-
+# \$refs で親コンポーネントから子コンポーネントのメソッド呼び出し
 
 FugaComponent.vue(親)
+
 ```js
 <template>
   <HogeComponent
@@ -397,5 +396,21 @@ export default{
     }
   }
 }
+</script>
+```
+
+# Vuetify を blade で使う。
+
+参考記事
+
+https://laracasts.com/discuss/channels/laravel/how-to-add-vuetify-to-a-laravel-project
+
+```js
+<script>
+  const vuetifyOptions={};
+  const app = new Vue({
+      vuetify: new Vuetify(vuetifyOptions),
+      el: '#app',
+  });
 </script>
 ```

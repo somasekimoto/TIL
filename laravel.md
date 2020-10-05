@@ -219,11 +219,12 @@ $new_array = array_filter($array, function($member){
 })
 
 // $new_array = [
-//     0 => ['name' => 'Kate', 'age' => 19], 
+//     0 => ['name' => 'Kate', 'age' => 19],
 //     2 => ['name' => 'Tailor', 'age' => 17]
 // ]
 //　php ではこれは配列として解釈される。
 ```
+
 仮にこのような配列をフロント側(vue.js など)に返す場合は注意が必要
 配列を返したつもりでも、オブジェクトとして解釈されてしまう。
 
@@ -235,7 +236,7 @@ $new_array = array_values(
 )
 
 // $new_array = [
-//     0 => ['name' => 'Kate', 'age' => 19], 
+//     0 => ['name' => 'Kate', 'age' => 19],
 //     1 => ['name' => 'Tailor', 'age' => 17]
 // ]
 // インデックス値が振り直されるので、こうすれば配列のままjs側に渡せる
@@ -538,14 +539,13 @@ protected $hidden = [
 ];
 ```
 
-
 # json_encode(), json_decode()
 
 参考記事
 
 https://qiita.com/shosho/items/34d0e9cc68c376a0a972
 
-## json_encode() : JSON化 
+## json_encode() : JSON 化
 
 ```php
 $array = [];
@@ -559,11 +559,11 @@ $json = json_encode($array,JSON_PRETTY_PRINT);
 $members = Member::all();
 
 $json = json_decode($members, true);
-// 第二引数 true/false は array/object 
+// 第二引数 true/false は array/object
 dd($json);
 ```
 
-# whereNotNull, whereNull 
+# whereNotNull, whereNull
 
 ```php
 users::whereNotNull('age')->get();
@@ -610,7 +610,6 @@ array_map(function($array, $index){
 }, $arrays, range(0, count($arrays)));
 ```
 
-
 # array_column
 
 参考記事
@@ -618,7 +617,6 @@ array_map(function($array, $index){
 https://qiita.com/jacksuzuki/items/eae943735bda747be09c
 
 pluck なども利用して、配列を自由に作り変えられる。
-
 
 ```php
 array array_column ( array $input , mixed $column_key [, mixed $index_key = null ] )
@@ -671,6 +669,7 @@ array4 = array_merge(array2, array1);
 ```
 
 # Guzzle
+
 Http リクエストを投げられるライブラリ
 
 参考記事
@@ -686,6 +685,7 @@ try {
     return $responseBodyAsString = $response->getBody()->getContents();
 }
 ```
+
 ## basic 認証の値を引数にいれる
 
 ```php
@@ -697,7 +697,7 @@ $res = $client->get('[URL]', ['auth' => ['[user]', '[password]'])
 
 参考記事
 
-isset, empty, is_nullの違い
+isset, empty, is_null の違い
 
 https://qiita.com/hirossyi73/items/6e6b9b3ff155a8b05075
 
@@ -718,7 +718,7 @@ auth()->user();
 // ログインしているユーザーの情報取得
 ```
 
-# jsonの返し方
+# json の返し方
 
 参考記事
 
@@ -735,9 +735,7 @@ public function index(){
 }
 ```
 
-
 # Guzzle の例外時のレスポンス拾う
-
 
 ```php
 try {
@@ -749,6 +747,7 @@ try {
         return json_decode($responseBodyAsString, true);
 }
 ```
+
 例外にレスポンスをとりたいときは、getResponse や getRequest を利用してからメソッドチェーンで繋ぐ。
 
 # フラッシュメッセージを表示
@@ -770,6 +769,7 @@ public function index(){
 view
 
 index.blade.php
+
 ```php
 @if (session('message'))
 <div class='alert alert-primary'>
@@ -822,12 +822,13 @@ json_encode($array, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)
 - JSON_PRETTY_PRINT : JSON を見やすい形に整形する。
 - JSON_UNESCAPED_UNICODE : 日本語などのマルチバイトの文字も正しく表示させる。
 
-# boot() で DB接続時に共通イベントを走らせる
+# boot() で DB 接続時に共通イベントを走らせる
 
 laravel で DB 保存時とレコード生成時に updated_by と created_by を挿入する。
 (DB にはこの２つのカラムはすでに用意してある。)
 
 Model
+
 ```php
 
 public static function boot()
@@ -849,18 +850,21 @@ public static function boot()
 https://public-constructor.com/laravel-query-builder-where-clauses/
 
 ```php
-->whereYear() 
-->whereMonth() 
-->whereDate() 
-->whereDay()  
-->whereTime() 
+->whereYear()
+->whereMonth()
+->whereDate()
+->whereDay()
+->whereTime()
 ->whereBetween() //あるカラムが持つ値に対して範囲検索をする場合に使用
 ->whereColumn() //指定した2つのカラムを比較
 ```
-## orWhere 
+
+## orWhere
+
 ```php
 ->where('user_id', 1)->orWhere('optional_column', request()->get('optional_column', 'デフォルト'))
 ```
+
 ## where 句の中に function をいれる
 
 ```php
@@ -877,6 +881,7 @@ https://public-constructor.com/laravel-query-builder-where-clauses/
 ```
 
 # Carbon
+
 参考記事
 
 https://qiita.com/mackeyTA/items/e8b5e47a9f020a1902c0
@@ -891,6 +896,7 @@ $now->hour //13
 ```
 
 # is_string()
+
 指定した変数が文字列かどうかを確認するサンプルコード
 
 ```php
@@ -946,14 +952,13 @@ https://readouble.com/laravel/7.x/ja/validation.html
 各リクエストのによって、laravel のバリデーションは少し違う働きをする。
 
 - HTTP リクエスト
-自動で session にエラーメッセージが保存される。なので、blade で $errors 変数が使える。
+  自動で session にエラーメッセージが保存される。なので、blade で \$errors 変数が使える。
 
 - AJAX リクエスト
-バリデーションエラーを全部含んだ JSON レスポンスを返す。(422 HTTP ステータスコードで)
+  バリデーションエラーを全部含んだ JSON レスポンスを返す。(422 HTTP ステータスコードで)
 - 複雑なバリデーションは、make:request コマンドでクラスを作成して、そこに記述する
 - validate()メソッドでバリデーションを行う
-- Validatorファサードを利用して、make メソッドでインスタンスを生成して、そこにルールを書くこともできる
-
+- Validator ファサードを利用して、make メソッドでインスタンスを生成して、そこにルールを書くこともできる
 
 ```php
 $request->validate([ルール])
@@ -982,6 +987,7 @@ $v = Validator::make(
 ```
 
 # is_int と is_numeric
+
 is_int も is_numeric も整数かどうかを判断するメソッドだが、
 
 - is_numeric は フォームなどに入力された数値文字列にも true を返す。
@@ -1007,8 +1013,8 @@ isDirty() // 値が変更されたかどうかを返す
 getOriginal() // 変更される前の値を返す
 ```
 
-
 # list
+
 一連の変数に値を代入できる。
 
 ```php
@@ -1018,7 +1024,8 @@ list($a, $b, $c) = $array;
 ```
 
 # fgets
-ファイルポインタから1行取得
+
+ファイルポインタから 1 行取得
 
 参考記事
 
@@ -1036,7 +1043,8 @@ echo $input;
 ?>
 ```
 
-# trim 
+# trim
+
 文字列の先頭と末尾にある空白を取り除く。
 
 ```php
@@ -1055,7 +1063,7 @@ https://readouble.com/laravel/7.x/ja/queries.html
 \App\Users::leftJoin('posts', 'users.id', '=', 'posts.user_id')
 ```
 
-## leftjoinした時に同じ名前のカラムの値が上書きされる。
+## leftjoin した時に同じ名前のカラムの値が上書きされる。
 
 参考記事
 
@@ -1082,10 +1090,10 @@ https://pentan.info/php/strtotime_month.html
 
 https://www.flatflag.nir87.com/modify-495#i-5
 
- 先月の日付とる場合は注意が必要
+先月の日付とる場合は注意が必要
 
 ```php
-date('Y-m-d', strtotime('-1 month')); 
+date('Y-m-d', strtotime('-1 month'));
 date('Y-m-d', strtotime('2016-3-31 -1 month')); // 2016-03-02
 date('Y-m-d', strtotime('last day of previous month', $date));　//2016-02-29
 ```
@@ -1105,6 +1113,7 @@ $regex = pre_match('/better/', $text, $better);
 # \Illuminate\Support\Facades\DB
 
 database.php
+
 ```php
 'connections' => [
     'mysql' => [
@@ -1122,13 +1131,14 @@ database.php
 ]
 ```
 
-
 controller
+
 ```php
 $user = \Illuminate\Support\Facades\DB::connection('mysql')->table('users')->where('user_id', 23)->first();
 ```
 
-# $fillable(ホワイトリスト方式) と $guarded(ブラックリスト方式) 
+# $fillable(ホワイトリスト方式) と $guarded(ブラックリスト方式)
+
 参考記事
 
 https://qiita.com/toro_ponz/items/b33c757cb7ba5bb48ed4
@@ -1143,4 +1153,20 @@ protected $guarded = [
 	'column_name'
 ];
 //操作拒否したいカラムを指定する。
+```
+
+# \$keyType
+
+Eloquent は主キーをデフォルト状態で自動的に int へキャストされるので、\$keyType を設定して、string 型にする必要がある。
+
+参考記事
+
+https://stackoverflow.com/questions/34582535/laravel-5-2-use-a-string-as-a-custom-primary-key-for-eloquent-table-becomes-0
+
+https://readouble.com/laravel/5.5/ja/eloquent.html
+
+```php
+protected $primaryKey = 'your_key_name';
+
+protected $keyType = 'string';
 ```
