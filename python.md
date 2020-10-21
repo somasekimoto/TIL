@@ -337,3 +337,40 @@ n = 26
 n // 5
 # 5 ... 5.2 の小数点以下を切り捨て、整数を返す。
 ```
+
+# getattr() と eval() で動的にファイルと関数を実行する。（ファイル名と関数名同じときのみ）
+
+## getattr()
+
+オブジェクトで指定された属性の値を返す関数
+
+参考記事
+
+https://techacademy.jp/magazine/31147
+
+## eval()
+
+文字列を python コードとして実行する。
+
+## コード
+
+hoge.py
+
+```python
+def hoge(a, b):
+    return a + b
+```
+
+fuga.py
+
+```python
+import hoge
+
+def hogehoge():
+
+hoge_string = "hoge"
+    sum = getattr(eval(hoge_string), hoge_string)(2, 2)
+    # getattr(object, function name)(arg, arg)
+    print(sum)
+# 4
+```
