@@ -58,3 +58,13 @@ select name, age, group_concat(concat(user_id, last_name)) from users where  age
 ```sql
 alter table [table_name] add column [column_name] generated as (another_column_name * 2) stored;
 ```
+
+# case ~ when ~ then ~ else ~ end
+
+WHEN 条件 THEN 値１ ELSE 値２ END
+
+条件を満たすとき、指定した値をとることができる。
+
+```sql
+select count(*), sum(case when sex = "male" then 1 else 0 end), name, place from users group by date;
+```
