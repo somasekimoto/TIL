@@ -68,3 +68,15 @@ WHEN 条件 THEN 値１ ELSE 値２ END
 ```sql
 select count(*), sum(case when sex = "male" then 1 else 0 end), name, place from users group by date;
 ```
+
+# trigger
+
+https://www.dbonline.jp/mysql/trigger/index1.html
+
+https://www.dbonline.jp/mysql/trigger/index3.html
+
+対象のテーブルにデータの追加や更新といった操作が行われた時に起動しますが、トリガーの中で対象テーブルの更新前のデータや更新後のデータを参照したい時に使う。
+
+```
+CREATE TRIGGER trigger_name { BEFORE | AFTER } { INSERT | UPDATE | DELETE } ON tbl_name FOR EACH ROW trigger_body
+```

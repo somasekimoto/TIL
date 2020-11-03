@@ -91,3 +91,22 @@ https://github.com/polygonplanet/encoding.js/blob/master/README_ja.md
 参考記事
 
 https://www.npmjs.com/package/file-saver
+
+# Math.ceil
+
+数値の小数点以下切り捨て
+
+https://www.javadrive.jp/javascript/math_class/index3.html#section2
+
+```js
+Math.ceil(3.2) = 3
+Math.ceil(-3.4) = -3
+```
+
+# marked.js
+
+マークダウン → htmlへの変換時に使った。
+
+https://www.wakuwakubank.com/posts/699-javascript-markedjs/
+
+https://qiita.com/amay077/items/704d48130e5cf17e8654
