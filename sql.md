@@ -80,3 +80,13 @@ https://www.dbonline.jp/mysql/trigger/index3.html
 ```
 CREATE TRIGGER trigger_name { BEFORE | AFTER } { INSERT | UPDATE | DELETE } ON tbl_name FOR EACH ROW trigger_body
 ```
+
+```
+create trigger log after INSERT on cash_records for each row insert into log_table(`statement`, `id`, `user_id`, `date`, `comment`, `json`, `created_at`, `updated_at`) values('INSERT', NEW.id, NEW.user_id, NEW.date, NEW.comment, NEW.json, NEW.ins_spot_id, NEW.created_at, NEW.updated_at)
+```
+
+## 削除
+
+```
+drop trigger [trigger_name]
+```

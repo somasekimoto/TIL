@@ -170,3 +170,15 @@ https://qiita.com/hana_shin/items/c31b0d05a91244c4db83
 ```
 ping [IP アドレス]
 ```
+
+## ssh
+
+### curlで公開鍵をセット
+
+```
+curl https://github.com/somasekimoto.keys >> ~/.ssh/authorized_keys
+```
+
+### 公開鍵と秘密鍵で余計な情報を削除する
+
+https://dev.classmethod.jp/articles/ssh-keygen-tips/
