@@ -1170,3 +1170,36 @@ protected $primaryKey = 'your_key_name';
 
 protected $keyType = 'string';
 ```
+
+# laravel-mix-bundle-analyzer
+
+bundle size の状態を確認できる。
+
+127.0.0.0:8888 で確認できる。
+
+https://qiita.com/pakio/items/dda7fea8cef964891c45
+
+インストール
+
+```
+npm install laravel-mix-bundle-analyzer --save-dev
+```
+
+webpack.mix.js
+
+```js
+require("laravel-mix-bundle-analyzer")
+mix.bundleAnalyzer()
+```
+
+# extract メソッド(ベンダの抽出)
+
+vendor.js
+
+https://readouble.com/laravel/5.4/ja/mix.html
+
+webpack.mix.js
+
+```js
+mix.extract()
+```
