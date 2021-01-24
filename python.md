@@ -374,3 +374,20 @@ hoge_string = "hoge"
     print(sum)
 # 4
 ```
+
+# openpyxl
+
+python で Microsoft Excel を扱うためのモジュール
+
+参考文献
+
+https://gammasoft.jp/support/how-to-use-openpyxl-for-excel-file/
+
+```python
+wb = load_workbook(filename = './Book1.xlsx')
+ws = wb['シート１']
+copy = wb.copy_worksheet(ws)
+c4 = ws['C4']
+cell = c4.value
+wb.save('Book1.xlsx')
+```

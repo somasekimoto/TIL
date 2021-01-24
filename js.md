@@ -1,13 +1,14 @@
 # JSON.parse()
+
 文字列を JSON として解析
 
 ```js
-const json = '{"result":true, "count":42}';
-const obj = JSON.parse(json);
+const json = '{"result":true, "count":42}'
+const obj = JSON.parse(json)
 
-console.log(obj.count);
+console.log(obj.count)
 // 42
-console.log(obj.result);
+console.log(obj.result)
 // true
 ```
 
@@ -51,13 +52,13 @@ const array_3 = array_1.splice(1, 2) // 1 はインデックス番号、2 はそ
 
 https://qiita.com/kws9/items/6ce80ae1c0fd28a3a9d7
 
-Object.entries() でオブジェクトを配列に変換できるが、同時にmap も使うことによって、自由に配列を操作できる。
+Object.entries() でオブジェクトを配列に変換できるが、同時に map も使うことによって、自由に配列を操作できる。
 
 ```js
-Object.entries(obj).map(([key, value]) => ({key, value}))
+Object.entries(obj).map(([key, value]) => ({ key, value }))
 ```
 
-# スプレッド構文で配列の展開 
+# スプレッド構文で配列の展開
 
 参考記事
 
@@ -65,7 +66,7 @@ https://qiita.com/Nossa/items/e6f503cbb95c8e6967f8
 
 ```js
 var array = [1, 2, 3]
-var strings = ['a','b','c']
+var strings = ["a", "b", "c"]
 
 array.push(...strings)
 
@@ -74,10 +75,11 @@ array.push(...strings)
 ```
 
 # papaparse
+
 参考記事
 
 https://www.papaparse.com
- 
+
 # encoding-japanese
 
 参考記事
@@ -105,8 +107,14 @@ Math.ceil(-3.4) = -3
 
 # marked.js
 
-マークダウン → htmlへの変換時に使った。
+マークダウン → html への変換時に使った。
 
 https://www.wakuwakubank.com/posts/699-javascript-markedjs/
 
 https://qiita.com/amay077/items/704d48130e5cf17e8654
+
+# IE(InternetExplorer)11 環境での Javascript 非対応
+
+https://qiita.com/siruku6/items/3465fd6e0588ee35cc78
+
+ex. axios(Promise), for-of, ``(バッククウォート)

@@ -1203,3 +1203,13 @@ webpack.mix.js
 ```js
 mix.extract()
 ```
+
+# collection
+
+laravel の collection メソッド一覧
+
+https://qiita.com/nunulk/items/9e0c4a371e94d763aed6
+
+http://qiita.com/nunulk/items/ef82a35aa2b75200afa3
+
+http://qiita.com/nunulk/items/e92d34c4092f202e60fa

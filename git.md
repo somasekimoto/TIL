@@ -117,7 +117,7 @@ $ git rebase -i --autosquash HEAD~7
 
 HEAD~7 は、最新のコミットから 7 つ遡ったコミットの中で、fixup にされたコミットがあれば、一緒にしてくれます。
 
-# git stash 
+# git stash
 
 変更を一時的に退避させる。
 
@@ -133,8 +133,12 @@ git stash pop stash@{1}
 git stash apply
 git stash apply stash@{1}
 # 退避した変更を適応する
-git stash list 
+git stash list
 # 退避させた変更のリストが出る。
 git stash show -p stash@{[番号]}
 # 退避させた変更を確認する
 ```
+
+# git flow github flow
+
+https://qiita.com/mint__/items/bfc58589b5b1e0a1856a

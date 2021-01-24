@@ -1,7 +1,7 @@
 # s3
 
 ```
-aws s3 mb s3://[バケット名] 
+aws s3 mb s3://[バケット名]
 バケットの作成
 aws s3 rb s3://[バケット名]
 バケットの削除
@@ -42,4 +42,67 @@ aws ssm get-parameter --name $1 --query 'Parameter.Value' --output text;
 
 環境変数のリストを表示
 aws ssm get-parameters-by-path --path "/" --query "Parameters[].[Name,Value]" --output text
+```
+
+# codecommit
+
+create repository
+
+```
+aws codecommit create-repository --repository-name $repoName
+```
+
+create pull request
+
+```
+aws codecommit create-pull-request --title fix_nippo --targets repositoryName=$repoName,sourceReference=$sourceBranch,destinationReference=$destinationBranch
+```
+
+merge
+
+```
+aws codecommit merge-pull-request-by-three-way --pull-request-id $pullRequestId --repository-name $repoName
+```
+
+自身で${現在のgitレポジトリ}の${現在のブランチ}から master へのプルリクを行い、自身でマージするワンライナー。.bash_profile に追記してコマンド化できる。
+
+```
+function muscle-merge() {
+  command aws codecommit merge-pull-request-by-three-way --repository-name $(basename $(git remote get-url origin) .git) --pull-request-id $(aws codecommit create-pull-request --title "Merge branch $(git branch --show-current)" --targets repositoryName=$(basename $(git remote get-url origin) .git),sourceReference=$(git branch --show-current),destinationReference=master --query 'pullRequest.pullRequestId' | sed -e 's/^"//' -e 's/"$//')
+}
+```
+
+レポジトリの変更を Slack #log-codecommit に通知するルールを作成する
+
+```
+cat <<EOF > rule.json
+{
+    "Name": "slack-log-codecommit-CodeCommitPlayground",
+    "EventTypeIds": [
+        "codecommit-repository-pull-request-created",
+        "codecommit-repository-pull-request-source-updated",
+        "codecommit-repository-pull-request-status-changed",
+        "codecommit-repository-pull-request-merged",
+        "codecommit-repository-approvals-status-changed",
+        "codecommit-repository-approvals-rule-override",
+        "codecommit-repository-comments-on-commits",
+        "codecommit-repository-comments-on-pull-requests",
+        "codecommit-repository-branches-and-tags-created",
+        "codecommit-repository-branches-and-tags-deleted",
+        "codecommit-repository-branches-and-tags-updated"
+    ],
+    "Resource": "arn:aws:codecommit:ap-northeast-1:XXXXXXXXXX:CodeCommitPlayground",
+    "Targets": [
+        {
+            "TargetType": "AWSChatbotSlack",
+            "TargetAddress": "arn:aws:chatbot::XXXXXXXXX:chat-configuration/slack-channel/log-codecommit"
+        }
+    ],
+    "Status": "ENABLED",
+    "DetailType": "FULL"
+}
+EOF
+cat rule.json
+aws codestar-notifications create-notification-rule --cli-input-json file://rule.json
+rm rule.json
 ```
