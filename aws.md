@@ -106,3 +106,13 @@ cat rule.json
 aws codestar-notifications create-notification-rule --cli-input-json file://rule.json
 rm rule.json
 ```
+
+# cloudfront と ヘッダ X-Cache
+
+https://sig9.hatenablog.com/entry/2017/03/06/120000
+
+Miss from CloudFront: キャッシュが存在しなかった
+
+Hit from CloudFront: キャッシュがヒットした
+
+RefreshHit from CloudFront: キャッシュの有効時間を超えているが、コンテンツに更新が無いのでキャッシュを再利用する
