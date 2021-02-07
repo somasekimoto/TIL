@@ -391,3 +391,8 @@ c4 = ws['C4']
 cell = c4.value
 wb.save('Book1.xlsx')
 ```
+
+
+# assertion
+
+https://codezine.jp/article/detail/12179

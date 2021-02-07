@@ -18,3 +18,22 @@ inline frameタグ
 ```html
 <iframe width="560" height="315" src="https://www.youtube.com/embed/-ewm56D9DzY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ```
+
+# 外部サイトを別タブで表示
+
+https://www.itti.jp/web-design/append-target-nofollow-noopener-external-to-external-links/
+
+
+```html
+<a href="[外部ページのURL]" target="_blank" rel="noopener"></a>
+```
+
+## noopener
+外部サイトを別タブで表示
+
+## noreferrer
+遷移先サイトに遷移元リンクの情報を渡さない
+
+
+## nofollow
+リンク先のウェブページの評価を無効であることを検索サイトに伝える

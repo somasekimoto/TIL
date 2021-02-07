@@ -182,3 +182,29 @@ curl https://github.com/somasekimoto.keys >> ~/.ssh/authorized_keys
 ### 公開鍵と秘密鍵で余計な情報を削除する
 
 https://dev.classmethod.jp/articles/ssh-keygen-tips/
+
+
+## サーバープロセス→configファイル→実行ディレクトリ
+
+https://www.wakuwakubank.com/posts/396-linux-ps-memory-device/
+
+### 実行中のプロセスを確認
+
+```
+ps aux
+ps aux | grep httpd
+```
+
+### .confファイルを探索
+```
+find . -name "httpd.conf"
+```
+
+### サーバーのconfigファイル内より実行ディレクトリを導く
+
+```
+cat /etc/httpd/conf/httpd.conf
+```
+
+
+
