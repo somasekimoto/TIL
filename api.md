@@ -57,6 +57,22 @@ groupId は usergroups.list api で確認する
 '<@' + [ユーザーID] + '>'
 ```
 
+## conversations.hisotry
+
+ワークスペースのメッセージを取得できる
+
+https://api.slack.com/methods/conversations.history
+
+```python
+import requests
+
+url = "https://slack.com/api/conversations.history"
+
+response = requests.get(url, {'channel': [取得するチャンネルのID],'token':[トークン],'limit':[取得するメッセージの数（デフォルトは100）],})
+
+```
+
+
 # Google App Script
 
 参考記事
