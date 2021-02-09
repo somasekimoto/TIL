@@ -37,3 +37,6 @@ https://www.itti.jp/web-design/append-target-nofollow-noopener-external-to-exter
 
 ## nofollow
 リンク先のウェブページの評価を無効であることを検索サイトに伝える
+
+
+## checkbox, radio には readonly は使えない

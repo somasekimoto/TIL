@@ -396,3 +396,46 @@ wb.save('Book1.xlsx')
 # assertion
 
 https://codezine.jp/article/detail/12179
+
+
+# selenium
+
+https://qiita.com/memakura/items/20a02161fa7e18d8a693
+
+
+## ログイン状態を保持する
+
+https://engineeeer.com/python-selenium-chrome-login/
+
+
+Google Chrome で chrome://version/ とURLに打ち込むとユーザー情報が出てくる。
+
+「プロフィールパス」--user-data-dir に該当する
+
+```python
+from selenium import webdriver
+
+options = webdriver.ChromeOptions()
+options.add_argument('--user-data-dir=/Users/[username]/Library/ApplicationSupport/Google/Chrome/Profile 2')
+options.add_argument('--profile-directory=Profile 2')
+driver = webdriver.Chrome(options=options)
+driver.get('[URL]')
+```
+
+
+# コマンドラインから引数を取得する
+
+https://note.nkmk.me/python-command-line-arguments/
+
+
+test.py
+```python
+import sys
+print(sys.argv)
+```
+
+```
+test.py 123 Hello
+
+>>>['test.py', '123', 'Hello']
+```
