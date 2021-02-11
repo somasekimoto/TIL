@@ -439,3 +439,25 @@ test.py 123 Hello
 
 >>>['test.py', '123', 'Hello']
 ```
+
+# ファイル、ディレクトリ操作
+
+https://note.nkmk.me/python-os-remove-rmdir-removedirs-shutil-rmtree/
+
+
+# base64
+
+https://stackoverflow.com/questions/61904942/how-to-convert-a-excel-file-to-base64-and-then-convert-base64-back-to-excel-in-p
+
+
+
+## Flask と Vue.js 画像ファイルアップロード
+
+https://qiita.com/rockguitar67/items/f8edc33dd221d8f4e965
+
+
+# Flask ファイルダウンロード
+
+https://qiita.com/5zm/items/760000cf63b176be544c
+
+

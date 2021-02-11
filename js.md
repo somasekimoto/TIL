@@ -118,3 +118,37 @@ https://qiita.com/amay077/items/704d48130e5cf17e8654
 https://qiita.com/siruku6/items/3465fd6e0588ee35cc78
 
 ex. axios(Promise), for-of, ``(バッククウォート)
+
+
+# FileReader を使った excel ファイルのアップロードとダウンロード
+
+```javascript
+readFile(e) {
+    const reader = new FileReader();
+    const file = e.target.files[0];
+    reader.onload = e => {
+      this.uploadFile(e.target.result);
+    };
+    reader.readAsDataURL(file);
+  },
+uploadFile(file) {
+  const path = "http://localhost:5000/upload";
+  const data = new FormData();
+  data.append("file", file);
+  const headers = { responseType: "blob", dataType: "binary" };
+  axios.post(path, data, headers)
+    .then(res => {
+      const type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+      const fileURL = window.URL.createObjectURL(new Blob([res.data], { type: type }));
+      const fileLink = document.createElement("a");
+      const dateString = new Date().toLocaleDateString("ja-jp");
+      fileLink.href = fileURL;
+      fileLink.setAttribute("download", dateString + ".xlsx");
+      fileLink.click();
+    })
+    .catch(err => {
+      console.log("err");
+      console.log(err);
+    });
+}
+```

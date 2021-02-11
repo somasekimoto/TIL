@@ -90,3 +90,19 @@ create trigger log after INSERT on cash_records for each row insert into log_tab
 ```
 drop trigger [trigger_name]
 ```
+
+# create temporary table
+利用しているセッション内だけで有効なテーブルの作成
+https://gihyo.jp/dev/serial/01/mysql-road-construction-news/0107
+```sql
+create temporary table [temp_table_name] [SELECT 文]
+```
+# index の利用
+https://www.atmarkit.co.jp/ait/articles/1703/01/news199.html#:~:text=%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E3%81%A8%E3%81%AF,%E4%B8%8A%E3%81%92%E3%82%8B%E3%81%93%E3%81%A8%E3%81%8C%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%99%E3%80%82
+https://use-the-index-luke.com/ja/sql/anatomy
+|インデックス設定が適しているケース| 適している理由|
+|----|----|
+|検索対象表の行数が多い|インデックスによる性能向上が見込める|
+|検索対象表において、検索項目の属性値（キー値）に重複・偏りが少ない|インデックスによる性能向上が見込める|
+|検索対象の表の更新が少ない (UPDATE 少ない)|検索対象表の更新速度低下が少ない|
+|検索対象の表の追加・削除が少ない(INSERT DELETE 少ない)|インデックスの性能低下が起きにくい|
