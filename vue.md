@@ -418,3 +418,13 @@ https://laracasts.com/discuss/channels/laravel/how-to-add-vuetify-to-a-laravel-p
 # Vuetify は 2020/12 時点で Vue3 はサポートしていない
 
 https://stackoverflow.com/questions/63533675/how-do-i-register-vuetify-2-3-or-any-packages-in-a-vue-3-project
+
+
+# v-expansion-panel
+
+https://vuetifyjs.com/ja/components/expansion-panels/
+
+
+# v-combobox
+
+https://vuetifyjs.com/ja/components/combobox/

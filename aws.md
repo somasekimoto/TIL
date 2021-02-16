@@ -27,6 +27,14 @@ https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-services-s3-commands.
 
 指定のディレクトリ内またはプレフィックス内のすべてのファイルやオブジェクトに対してコマンドが実行される。
 
+## presign
+
+有効期限付きの署名付きURLの生成
+
+cli で生成
+
+https://dev.classmethod.jp/articles/generate-s3-pre-signed-url-by-aws-cli/
+
 # ssm
 
 参考記事
