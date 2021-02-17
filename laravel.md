@@ -1213,3 +1213,29 @@ https://qiita.com/nunulk/items/9e0c4a371e94d763aed6
 http://qiita.com/nunulk/items/ef82a35aa2b75200afa3
 
 http://qiita.com/nunulk/items/e92d34c4092f202e60fa
+
+
+# laravel-permission
+
+
+https://qiita.com/Fell/items/7cd398b8ae65ac42950f
+
+https://spatie.be/docs/laravel-permission/v3/advanced-usage/seeding
+
+
+# 複合キー追加
+
+```php
+$table->unique(['user_id', 'photo_id']);
+```
+
+https://readouble.com/laravel/5.5/ja/migrations.html
+
+# 外部キー 
+
+https://mseeeen.msen.jp/laravel-53-eloquent-orm-2/#i-8
+
+```php
+$table->unsignedBigInteger('user_id');
+$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+```

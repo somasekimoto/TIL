@@ -451,7 +451,7 @@ https://stackoverflow.com/questions/61904942/how-to-convert-a-excel-file-to-base
 
 
 
-## Flask と Vue.js 画像ファイルアップロード
+# Flask と Vue.js 画像ファイルアップロード
 
 https://qiita.com/rockguitar67/items/f8edc33dd221d8f4e965
 
@@ -461,3 +461,6 @@ https://qiita.com/rockguitar67/items/f8edc33dd221d8f4e965
 https://qiita.com/5zm/items/760000cf63b176be544c
 
 
+# itertools
+
+https://qiita.com/anmint/items/37ca0ded5e1d360b51f3
