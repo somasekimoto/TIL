@@ -23,6 +23,10 @@ inline frameタグ
 
 https://www.itti.jp/web-design/append-target-nofollow-noopener-external-to-external-links/
 
+https://wwg.co.jp/blog/3807#an21
+
+- リンク先のページにもし悪意をもったJavaScriptが記載されていたら、リンク元であるページを好き勝手に改ざんできてしまう可能性がある
+
 
 ```html
 <a href="[外部ページのURL]" target="_blank" rel="noopener"></a>

@@ -162,3 +162,16 @@ from linebot.models import (
 )
 
 ```
+
+
+# 市区町村取得API
+
+国土交通省
+https://www.land.mlit.go.jp/webland/
+
+https://www.land.mlit.go.jp/webland/api/CitySearch?area=13
+
+
+RESAS API
+
+https://opendata.resas-portal.go.jp/

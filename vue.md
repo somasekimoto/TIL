@@ -428,3 +428,14 @@ https://vuetifyjs.com/ja/components/expansion-panels/
 # v-combobox
 
 https://vuetifyjs.com/ja/components/combobox/
+
+# v-data-table
+
+https://vuetifyjs.com/en/api/v-data-table/
+
+https://vuetifyjs.com/en/api/v-edit-dialog/
+
+
+# v-tabs
+
+https://vuetifyjs.com/ja/components/tabs/

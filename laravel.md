@@ -1239,3 +1239,9 @@ https://mseeeen.msen.jp/laravel-53-eloquent-orm-2/#i-8
 $table->unsignedBigInteger('user_id');
 $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 ```
+
+# empty() と isEmpty()
+
+https://www.larajapan.com/2019/03/02/isempty%E3%81%A7%E3%81%97%E3%81%9F/
+
+- empty()は引数が配列なら空を認識するが、Collectionのオブジェクトなら空を判断できない
