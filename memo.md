@@ -208,3 +208,8 @@ cat /etc/httpd/conf/httpd.conf
 
 
 
+# G Suite アカウントのIDとパスのみでアカウント接続が無効に
+
+https://workspaceupdates-ja.googleblog.com/2019/12/g-suite_24.html
+
+https://workspaceupdates-ja.googleblog.com/2020/04/blog-post_2.html

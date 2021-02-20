@@ -1245,3 +1245,31 @@ $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 https://www.larajapan.com/2019/03/02/isempty%E3%81%A7%E3%81%97%E3%81%9F/
 
 - empty()は引数が配列なら空を認識するが、Collectionのオブジェクトなら空を判断できない
+
+
+# 親子リレーション
+
+https://www.yoheim.net/blog.php?q=20181104
+
+```php
+$post = Post::with('contents')->find(1);
+return $post;
+```
+
+# api.php と web.php
+
+https://teratail.com/questions/308164
+
+https://awesome-linus.com/2019/04/06/laravel-api-php-csrf/
+
+- api.php は CSRF保護がない
+
+
+# 外部キーがデフォルトでないパターン
+
+https://qiita.com/saya1001kirinn/items/69e2146691101f92d57b
+
+
+# boot の saving と creating
+
+https://qiita.com/b_a_a_d_o/items/ca06024d80499f1ece14
