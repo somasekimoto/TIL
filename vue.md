@@ -439,3 +439,7 @@ https://vuetifyjs.com/en/api/v-edit-dialog/
 # v-tabs
 
 https://vuetifyjs.com/ja/components/tabs/
+
+# v-tooltip
+
+https://vuetifyjs.com/en/components/tooltips/#api

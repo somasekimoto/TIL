@@ -106,3 +106,17 @@ https://use-the-index-luke.com/ja/sql/anatomy
 |検索対象表において、検索項目の属性値（キー値）に重複・偏りが少ない|インデックスによる性能向上が見込める|
 |検索対象の表の更新が少ない (UPDATE 少ない)|検索対象表の更新速度低下が少ない|
 |検索対象の表の追加・削除が少ない(INSERT DELETE 少ない)|インデックスの性能低下が起きにくい|
+
+## explain と index
+
+explain 
+
+https://qiita.com/mtanabe/items/33a80bf2749a872645e6
+
+indexの貼り方
+
+https://qiita.com/katsukii/items/3409e3c3c96580d37c2b
+
+```sql
+ALTER TABLE landing_pages ADD INDEX index_name(user_id, created)
+```

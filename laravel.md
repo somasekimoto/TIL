@@ -1273,3 +1273,19 @@ https://qiita.com/saya1001kirinn/items/69e2146691101f92d57b
 # boot の saving と creating
 
 https://qiita.com/b_a_a_d_o/items/ca06024d80499f1ece14
+
+# save と updateは処理が異なる
+
+https://qiita.com/gomaaa/items/91e5cbd319279a2db6ec
+
+# take()とlimit()
+
+
+https://www.javaer101.com/en/article/16765398.html
+
+https://stackoverflow.com/questions/45120135/in-laravel-eloquent-what-is-the-difference-between-limit-vs-take/45120150#:~:text=limit%20only%20works%20for%20eloquent,ORM%20or%20Query%20Builder%20objects.
+
+
+- take() は limit()のalias
+
+- take()はEloqient + Collectionにも適用可能
