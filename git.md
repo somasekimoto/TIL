@@ -142,3 +142,33 @@ git stash show -p stash@{[番号]}
 # git flow github flow
 
 https://qiita.com/mint__/items/bfc58589b5b1e0a1856a
+
+# git cherry-pick
+
+ブランチ作業時、特定のコミットのみの取り込み
+
+https://www.sejuku.net/blog/71544
+
+- コミット
+```
+git cherry-pick [取り込むコミットID]
+```
+
+- コミットメッセージの変更
+
+```
+git cherry-pick -e [取り込むコミットID]
+```
+
+- 処理のみ取り込み（コミットは残さない）
+```
+git cherry-pick -n [取り込むコミットID]
+```
+
+- コンフリクトが起こった時
+
+コンフリクト解消後、
+
+```
+git cherry-pick --continue
+```

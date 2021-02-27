@@ -1289,3 +1289,11 @@ https://stackoverflow.com/questions/45120135/in-laravel-eloquent-what-is-the-dif
 - take() は limit()のalias
 
 - take()はEloqient + Collectionにも適用可能
+
+# pusher を利用してwebsocketによる両方向通信
+
+https://qiita.com/shotashimura/items/d0019032f941458b0963
+
+https://www.webprofessional.jp/add-real-time-notifications-laravel-pusher/
+
+https://noumenon-th.net/programming/2020/07/11/aravel-broadcast/

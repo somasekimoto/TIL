@@ -195,6 +195,8 @@ mix
 
 ### resources/js/bootstrap.js を編集
 
+https://qiita.com/ngron/items/2faae8068baa093d6aba
+
 ```js
 window.axios.defaults.headers.common["X-CSRF-TOKEN"] = document
   .querySelector('meta[name="csrf-token"]')
@@ -443,3 +445,27 @@ https://vuetifyjs.com/ja/components/tabs/
 # v-tooltip
 
 https://vuetifyjs.com/en/components/tooltips/#api
+
+# v-file-input
+
+https://qiita.com/mashirou_yuguchi/items/14d3614173c114c30f02
+
+## files の格納場所は e.target.files ではない。
+
+```js
+<v-file-input
+  v-model='file'
+  @change='checkFile'
+>
+</v-file-input>
+
+
+checkFile: function(files) {
+  // arguments直下に格納されている。
+    console.log(files)
+}
+```
+
+# イベントハンドラ一覧
+
+https://qiita.com/b1san/items/6bc0be17cd6ed687520c
