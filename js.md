@@ -152,3 +152,12 @@ uploadFile(file) {
     });
 }
 ```
+
+
+# GAS
+
+## Spreadsheet
+
+### スプレッドシートのレイアウト
+
+https://hirachin.com/post-4063/

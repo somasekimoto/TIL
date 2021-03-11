@@ -120,3 +120,19 @@ https://qiita.com/katsukii/items/3409e3c3c96580d37c2b
 ```sql
 ALTER TABLE landing_pages ADD INDEX index_name(user_id, created)
 ```
+
+# sqlモード
+
+https://www.wakuwakubank.com/posts/414-mysql-sqlmode/
+
+
+# MySQL variables
+
+https://qiita.com/katsuyan/items/0c7ed34d9f8235b8363a
+
+
+```
+SHOW VARIABLES;
+SET character_set_client=utf8mb4;
+SET character_set_connection=utf8mb4;
+```

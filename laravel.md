@@ -1013,6 +1013,13 @@ isDirty() // 値が変更されたかどうかを返す
 getOriginal() // 変更される前の値を返す
 ```
 
+## isDirty と wasChanged の違い
+
+https://www.larajapan.com/2019/07/05/isdirty-vs-waschanged/
+
+isDirty: DB保存後でも変化を判断不可能
+wasChanged: DB保存後でも変化を判断可能
+
 # list
 
 一連の変数に値を代入できる。
@@ -1297,3 +1304,37 @@ https://qiita.com/shotashimura/items/d0019032f941458b0963
 https://www.webprofessional.jp/add-real-time-notifications-laravel-pusher/
 
 https://noumenon-th.net/programming/2020/07/11/aravel-broadcast/
+
+
+# composer install 時のメモリ不足
+
+https://uiuifree.com/blog/develop/php-composer-install-memory-limit/
+
+https://getcomposer.org/doc/articles/troubleshooting.md#memory-limit-errors
+
+https://getcomposer.org/doc/articles/troubleshooting.md#memory-limit-errors
+
+
+# Eloquent 便利機能
+
+https://qiita.com/henriquebremenkanp/items/e21de43e4b9079265d7f
+
+
+# NULL許容型
+
+https://qiita.com/ymm1x/items/e53ded283080ca3a42b4
+
+
+デフォルト値
+
+```php
+function($name = null){
+}
+```
+
+nullable 型宣言
+
+```php
+function(?$name){
+}
+```
