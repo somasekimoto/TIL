@@ -1178,6 +1178,43 @@ protected $primaryKey = 'your_key_name';
 protected $keyType = 'string';
 ```
 
+# laravel-mix
+
+https://laravel-mix.com/docs/6.0/upgrade#update-your-npm-scripts
+
+## laravel8(laravel-mix 6)からはnpm scriptsの書き方が変わった
+
+package.json
+
+BEFORE
+
+```js
+
+"scripts": {
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch",
+    "watch-poll": "npm run watch -- --watch-poll",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --disable-host-check --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+}
+```
+
+AFTER
+```js
+"scripts": {
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "production": "mix --production"
+}
+```
+
+# mix-env-file
+
+https://laravel-mix.com/extensions/env-file
+
+
 # laravel-mix-bundle-analyzer
 
 bundle size の状態を確認できる。

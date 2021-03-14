@@ -32,6 +32,10 @@ Tester などを利用して、実際のアプリで使う前に、テストを�
 https://app.slack.com/client/[ワークスペースID]/[ユーザー or チャンネル slack ID]
 ```
 
+## rate limits
+
+https://api.slack.com/docs/rate-limits
+
 ## chat.postMessage
 
 参考記事
@@ -71,6 +75,15 @@ url = "https://slack.com/api/conversations.history"
 response = requests.get(url, {'channel': [取得するチャンネルのID],'token':[トークン],'limit':[取得するメッセージの数（デフォルトは100）],})
 
 ```
+
+## chat.delete
+
+https://api.slack.com/methods/chat.delete
+
+
+## chat.update
+
+https://api.slack.com/methods/chat.update
 
 
 # Google App Script

@@ -124,3 +124,15 @@ Miss from CloudFront: キャッシュが存在しなかった
 Hit from CloudFront: キャッシュがヒットした
 
 RefreshHit from CloudFront: キャッシュの有効時間を超えているが、コンテンツに更新が無いのでキャッシュを再利用する
+
+# Route53でALIASレコード使用時のTTL
+
+https://dev.classmethod.jp/articles/amazon-route-53-alias-ttl/
+
+
+エイリアスリソースレコードセットが CloudFront ディストリビューション、Elastic Beanstalk 環境、ELB ロードバランサー、または Amazon S3 バケットを指し示す場合は、有効期限 (TTL) を設定できません。
+
+- CloudFront：60秒
+- Elastic Beanstalk：60秒
+- Elastic Load Balancing(ELB)：60秒
+- S3：3秒
