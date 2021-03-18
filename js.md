@@ -153,6 +153,9 @@ uploadFile(file) {
 }
 ```
 
+#  Error: `gyp` failed with exit code: 1
+
+https://codenote.net/nodejs/npm/4233.html
 
 # GAS
 

@@ -1375,3 +1375,11 @@ nullable 型宣言
 function(?$name){
 }
 ```
+
+# laravel throttle
+
+middlewareで多重リクエストの制限の設定ができる。
+
+https://www.suzu6.net/posts/170-laravel-throttle/
+
+https://qiita.com/Syy12345-Unity/items/3f34edff255192c2e510

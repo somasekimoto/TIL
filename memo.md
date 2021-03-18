@@ -213,3 +213,16 @@ cat /etc/httpd/conf/httpd.conf
 https://workspaceupdates-ja.googleblog.com/2019/12/g-suite_24.html
 
 https://workspaceupdates-ja.googleblog.com/2020/04/blog-post_2.html
+
+
+# Android デバイス管理 MDM EMMとは
+
+ttps://imagers.co.jp/contents/1558/
+
+
+# ブラウザキャッシュ利用の防止策 timestamp
+
+https://qiita.com/shirauix/items/cbaa4fed86f42a0c27ec
+
+
+http://hasegawa.hatenablog.com/entry/20090925/p1
