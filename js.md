@@ -164,3 +164,12 @@ https://codenote.net/nodejs/npm/4233.html
 ### スプレッドシートのレイアウト
 
 https://hirachin.com/post-4063/
+
+
+# async await と forEach
+
+https://qiita.com/frameair/items/e7645066075666a13063
+
+https://qiita.com/jkr_2255/items/62b3ee3361315d55078a
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach#polyfill

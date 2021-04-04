@@ -226,3 +226,13 @@ https://qiita.com/shirauix/items/cbaa4fed86f42a0c27ec
 
 
 http://hasegawa.hatenablog.com/entry/20090925/p1
+
+
+# 「AWS」「Azure」「GCP」の処理性能を比較、Cockroach Labsが2021年版のレポートを公開
+
+https://www.atmarkit.co.jp/ait/spv/2103/30/news111.html
+
+
+# Google Page Speed Insights
+
+https://blog.ideamans.com/2019/04/inside-pagespeed-insights.html

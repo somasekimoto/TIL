@@ -136,3 +136,9 @@ https://dev.classmethod.jp/articles/amazon-route-53-alias-ttl/
 - Elastic Beanstalk：60秒
 - Elastic Load Balancing(ELB)：60秒
 - S3：3秒
+
+# エッジ最適化カスタムドメイン名の作成
+
+https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/how-to-edge-optimized-custom-domain-name.html
+
+serverless framework がこれらを自動作成してくれる。

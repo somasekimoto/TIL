@@ -136,3 +136,7 @@ SHOW VARIABLES;
 SET character_set_client=utf8mb4;
 SET character_set_connection=utf8mb4;
 ```
+
+# Mysql で文字コードutf8mb4にする際のVARCHAR型の最大文字数
+
+https://teratail.com/questions/229717
