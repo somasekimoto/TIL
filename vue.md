@@ -469,3 +469,22 @@ checkFile: function(files) {
 # イベントハンドラ一覧
 
 https://qiita.com/b1san/items/6bc0be17cd6ed687520c
+
+
+
+# v-switch を上下中央にする
+
+```html
+<v-switch
+    inset
+></v-switch>
+```
+
+hide-detailsを追加する
+
+```html
+<v-switch
+    inset
+    hide-details
+></v-switch>
+```
