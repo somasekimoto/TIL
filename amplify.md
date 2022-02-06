@@ -13,6 +13,17 @@ amplify env add
 amplify env checkout dev
 ```
 
+- 環境の表示
+
+```
+amplify env list
+
+| Environments |
+| ------------ |
+| production   |
+| *staging     |
+```
+
 ## アプリをホスト
 
 ```
