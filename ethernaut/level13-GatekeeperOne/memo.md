@@ -6,6 +6,11 @@ GatekeeperOneコントラクトの変数entrantにアドレスを設定する
 - gasleft使う必要がある
 
 
+## 参考
+
+https://dev.to/nvn/ethernaut-hacks-level-13-gatekeeper-one-3ljo
+
+https://ardislu.dev/ethernaut/13
 
 
 ## ハック
@@ -13,22 +18,77 @@ GatekeeperOneコントラクトの変数entrantにアドレスを設定する
 ### 前提
 
 - entrantにtx.originを設定する関数のmodifierが3つあって、それぞれのバリデーション通る必要がある
+- **Ethereumのアドレスは、基本的には20バイト（160ビット）の長さ**
 
+- ビット演算について知っておくと解きやすい 
 
-### 手順
 - modifier gateOneを通る
 msg.sender != tx.originである必要があるので、コントラクトからの呼び出しが必要
 
-```sol
-
-```
 
 - modifier gateTwoを通る
-- ガスの残り(gasleft)が、8191の倍数である必要がある
+   - ガスの残り(gasleft)が、8191の倍数である必要がある
+   - これは、ブルートフォースでgasの数がヒットするまでenter関数を呼びまくる。forでイテレーションする（実際には300にして成功した）
 
 
 - modifier gateThree を通る
+  - 以下三つの条件をクリアする必要がある
+    - uint32(uint64(_gateKey)) == uint16(uint64(_gateKey))
+    - uint32(uint64(_gateKey)) != uint64(_gateKey)
+    - uint32(uint64(_gateKey)) == uint16(uint160(tx.origin))
+    - ビット演算踏まえた上で解決した方が良いが簡単には以下の部分見たほうがわかりやすい
 
+![image](image.png)
+
+### 手順
+
+#### gateOneへの対応
+
+コントラクトからcallする
+
+#### gateThreeへの対応
+enter関数に渡す引数gateKeyを作る。
+
+
+![image](image.png)
+のようにやる。
+
+- 最初の条件
+  - 8bytes(64bit)のgateKeyをuint64->uint32とキャストしたもの、つまり最初のgateKeyの最初の8字とgateKeyの最初の4字を比べ、等しい必要がある。
+　　- ここでビット演算で異なるバイト数の値を比べるときは、少ないバイト数の値を多い方に合わせる。合わせる際に頭に000..と0を足して合わせる。
+
+- 2つ目の条件
+  - 同じくgateKeyの最初の8字と、gateKey全体16字を比べて、等しくない必要がある。
+    - つまりgateKeyが32bit以上の値である必要がある。
+
+- 3つ目の条件
+  - gateKeyの最初の8字と、tx.originのuint16、つまり最初の4字が等しい必要がある
+    - **この条件により、gateKeyはtx.origin == contractを呼び出すEOAアドレスから生成される必要がある**
+
+これらの条件から逆算して作れるgateKeyの一例は以下。ビットのことやビット演算がなんとなくしかわからない自分にはしっくりきた。
+
+```sol
+bytes8 key = 0x1111111100000000;
+bytes memory keyArray = abi.encodePacked(key);
+
+// Extracts last 2 bytes of an address: 0x000...1234 --> 0x1234
+bytes2 lastTwo = bytes2(uint16(uint160(tx.origin)));
+bytes memory lastTwoArray = abi.encodePacked(lastTwo);
+// To pass gate 3 part 3
+keyArray[6] = lastTwoArray[0];
+keyArray[7] = lastTwoArray[1];
+bytes8 gateKey = bytes8(keyArray);
+```
+
+#### gateTwoへの対応
+
+gateTwoまで処理が来て、gasleftを使用した後のgasの残りが8191の乗算である必要がある。
+
+これは複数のやり方があり、ネット上で王道とされてたのは、enterをcallしてあえてgateTwoで失敗するようにさせて、opcodeが見れるdebug機能内でGASを探すやり方。
+
+自分の場合は、remixでローカル環境で実行すると、コントラクトからGatekeeperOneコントラクトを読んでいるはずなのになぜかtx.originとmsg.senderが同じだったので断念。
+
+**直接sepolia上で、ブルートフォース攻撃しながら、etherscanでtxを確認し、右上の「More」->「Geth Debug Trace」を確認しながらやった。**
 
 
 ### ChatGPTへの質問
@@ -53,5 +113,7 @@ Solidityでは、これらのアドレスを通常address型で扱いますが�
 
 - ビット数が異なる整数を比較するときは、暗黙的に短い方の数字を長い方に合わせる
     - uint16 0x1234と uint32 0x00001234のとき2つは等しくなる
+
+
 
 
