@@ -90,6 +90,7 @@ gateTwoまで処理が来て、gasleftを使用した後のgasの残りが8191�
 
 **直接sepolia上で、ブルートフォース攻撃しながら、etherscanでtxを確認し、右上の「More」->「Geth Debug Trace」を確認しながらやった。**
 
+完成コードは./Hack.sol
 
 ### ChatGPTへの質問
 
