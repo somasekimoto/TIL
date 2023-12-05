@@ -24,3 +24,6 @@ func BenchmarkSum(b *testing.B) {
     }
 }
 ``` 
+
+-  `reflect.DeepEqual` は、2つの引数が深い意味で等しいかどうかを判断します。これは、配列やスライスなどの複雑なデータ構造を比較するのに便利です。例えば、`reflect.DeepEqual([]int{1, 2}, []int{1, 2})`は`true`を返します。ですが、型の安全性は下がります。
+
